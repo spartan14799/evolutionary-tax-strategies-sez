@@ -1,0 +1,10 @@
+environment:
+  description: "Simulation setup for baseline scenario - Mixed Diamond graph with 6 nodes"
+  version: 1.0
+
+  yaml_paths:
+    agents_info: "../agents_info/standard_agents_info.yaml"
+    chart_of_accounts: "../chart_of_accounts/standard_chart_of_accounts.yaml"
+    graph_info: "../graphs/6_good/6_node_nested_graph_1.yaml"
+    price_matrix: "../price_matrices/6_good/6_good_price_matrix_1.yaml"
+

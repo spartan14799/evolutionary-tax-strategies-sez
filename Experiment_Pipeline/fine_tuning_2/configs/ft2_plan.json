@@ -1,0 +1,32 @@
+{
+  "seeds": [101, 202, 303, 404, 505, 606],
+  
+  "env_json": "../data/prices/FT2_Prices_V1_env.json",
+  "accounts_yaml": "../../chart_of_accounts.yaml",
+
+  "algorithms": ["generic", "pso", "joint"],
+
+  "generations": 100,
+  "popsize": 32,
+  "evals_cap": 10000,
+  "n_samples_per_algo": 100,
+
+  "bounds": {
+    "generic": {
+      "cxpb": [0.01, 0.99],
+      "mutpb": [0.01, 0.50],
+      "mutation_rate": [0.01, 0.20]
+    },
+    "pso": {
+      "w": [0.40, 0.98],
+      "c1": [0.80, 2.20],
+      "c2": [0.80, 2.20],
+      "c_sum_soft": [2.0, 4.0]
+    },
+    "joint": {
+      "parents_rate": [0.10, 0.80],
+      "sel_mutation": [0.01, 0.50],
+      "tail_mutation": [0.005, 0.25]
+    }
+  }
+}

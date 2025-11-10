@@ -1,0 +1,53 @@
+{
+  "graph_file": "data/graph/ft2_graph.json",
+  "graph_name": "FT2_ProdGraph_V1",
+  "output_name": "FT2_Prices_V1",
+  "nodes_topological": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O"
+  ],
+  "node_index_map": {
+    "A": 0,
+    "B": 1,
+    "C": 2,
+    "D": 3,
+    "E": 4,
+    "F": 5,
+    "G": 6,
+    "H": 7,
+    "I": 8,
+    "J": 9,
+    "K": 10,
+    "L": 11,
+    "M": 12,
+    "N": 13,
+    "O": 14
+  },
+  "n_agents": 3,
+  "shape": [
+    15,
+    3,
+    3
+  ],
+  "params": {
+    "base": 100.0,
+    "m1": 0.01,
+    "m2": 0.1,
+    "m3": 0.25,
+    "seed": 20,
+    "noise_sigma": 0.1
+  }
+}

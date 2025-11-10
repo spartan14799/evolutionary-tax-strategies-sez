@@ -1,0 +1,188 @@
+meta:
+  project_name: FTZ_EvoBench_Test
+  author: Carlos Sanchez - Andres Leguizamon - Sofia Ocampo
+  description: 'Minimal test configuration to validate environment generation, algorithm
+    execution, and output logging before running the full benchmark suite.
+
+    '
+paths:
+  graphs_dir: simulations/ga_benchmark/data/graphs/
+  prices_dir: simulations/ga_benchmark/data/prices/
+  results_dir: simulations/ga_benchmark/results/
+  logs_dir: simulations/ga_benchmark/logs/
+  metrics_dir: simulations/ga_benchmark/metrics/
+  figures_dir: simulations/ga_benchmark/figures/
+  export_runs_csv: simulations/ga_benchmark/results/test_runs.csv
+  export_curves_csv: simulations/ga_benchmark/results/test_curves.csv
+  export_meta_json: simulations/ga_benchmark/results/test_meta.json
+graphs:
+  sizes:
+  - 6
+  - 10
+  - 14
+  - 18
+  - 22
+  - 26
+  - 30
+  - 34
+  - 38
+  - 42
+  complexity_levels:
+  - name: low
+    density: 0.25
+    max_depth: 3
+  - name: medium
+    density: 0.5
+    max_depth: 5
+  - name: high
+    density: 0.75
+    max_depth: 8
+  num_graphs_per_level: 3
+  generator_seed: 12345
+prices:
+  type: deterministic_block
+  matrix_size: 3
+  num_matrices_per_graph: N
+  base_value_start: 10
+  base_value_step: 30
+  noise:
+    enabled: true
+    std: 0.1
+    distribution: normal
+  random_seed: 777
+budgets:
+  evals_cap: 150000
+  time_limit_minutes: 240
+algorithms:
+  FLAT:
+    popsize_by_size:
+      6: 50
+      10: 50
+      14: 100
+      18: 100
+      22: 150
+      26: 150
+      30: 200
+      34: 200
+      38: 300
+      42: 300
+    generations_by_size:
+      6: 50
+      10: 50
+      14: 75
+      18: 75
+      22: 100
+      26: 100
+      30: 200
+      34: 200
+      38: 400
+      42: 400
+    mutation_rate:
+    - 0.03
+    - 0.05
+    - 0.08
+    parents_fraction: 0.3
+    crossover: onepoint_mid
+    fix_last_gene: true
+    early_stop:
+      enabled: true
+      min_gens: 25
+      tol: 1e-4
+      patience: 25
+      metric: best_utility
+  JOINT:
+    popsize_by_size:
+      6: 50
+      10: 50
+      14: 100
+      18: 100
+      22: 150
+      26: 150
+      30: 200
+      34: 200
+      38: 300
+      42: 300
+    generations_by_size:
+      6: 50
+      10: 50
+      14: 75
+      18: 75
+      22: 100
+      26: 100
+      30: 200
+      34: 200
+      38: 400
+      42: 400
+    sel_mutation:
+    - 0.25
+    tail_mutation:
+    - 0.03
+    - 0.05
+    - 0.08
+    parents_fraction: 0.3
+    crossover: uniform
+    fix_last_gene: true
+    early_stop:
+      enabled: true
+      min_gens: 25
+      tol: 1e-4
+      patience: 25
+      metric: best_utility
+  EXHAUSTIVE:
+    population_tail_by_size:
+      6: 20
+      10: 20
+      14: 25
+      18: 28
+      22: 32
+      26: 37
+      30: 42
+      34: 45
+      38: 48
+      42: 50
+    generations_tail_by_size:
+      6: 10
+      10: 12
+      14: 15
+      18: 20
+      22: 25
+      26: 30
+      30: 33
+      34: 35
+      38: 40
+      42: 40
+    mutation_rate_tail:
+    - 0.05
+    crossover: onepoint_tail_mid
+    fix_last_gene: true
+    max_combos_cap: 200
+    per_good_cap: 50
+    mode_threshold: 14
+    early_stop:
+      enabled: true
+      min_gens: 20
+      tol: 1e-4
+      patience: 200
+      metric: best_utility
+output:
+  save_best_only: false
+  save_all_runs: true
+  log_level: INFO
+  print_progress: true
+  plots_simple: true
+  export_csv: true
+  export_json: true
+  compress_results: false
+  random_seeds:
+  - 11
+  - 17
+  - 23
+  - 42
+  - 73
+  - 81
+  - 98
+  - 99
+environment:
+  selection: all
+  fixed_index: null
+  graph_id: null
