@@ -7,7 +7,7 @@
   "algorithms": ["generic", "mixed_generic", "pso", "joint", "baseline", "macro", "micro", "macro_micro", "recombination"],
 
   "generations": 100,
-  "popsize": 22,
+  "popsize": 26,
   "evals_cap": 10000,
 
   "n_samples_per_algo": 100,
