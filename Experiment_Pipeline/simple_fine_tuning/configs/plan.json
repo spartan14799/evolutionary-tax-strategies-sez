@@ -4,10 +4,10 @@
   "env_json": "../data/prices/FT2_Prices_V1_env.json",
   "accounts_yaml": "../../chart_of_accounts.yaml",
 
-  "algorithms": ["generic", "pso", "joint", "baseline", "macro", "micro", "macro_micro", "recombination"],
+  "algorithms": ["generic", "mixed_generic", "pso", "joint", "baseline", "macro", "micro", "macro_micro", "recombination"],
 
   "generations": 100,
-  "popsize": 22,
+  "popsize": 26,
   "evals_cap": 10000,
 
   "n_samples_per_algo": 100,
@@ -17,6 +17,12 @@
       "cxpb": [0.01, 0.99],
       "mutpb": [0.01, 0.50],
       "mutation_rate": [0.01, 0.20]
+    },
+    "mixed_generic": {
+      "cxpb": [0.25, 0.85],
+      "mutpb": [0.05, 0.30],
+      "mutation_rate": [0.005, 0.20],
+      "selector_mutation_rate": [0.005, 0.20]
     },
     "pso": {
       "w": [0.40, 0.98],

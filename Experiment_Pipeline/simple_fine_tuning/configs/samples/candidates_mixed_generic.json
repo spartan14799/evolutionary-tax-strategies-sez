@@ -1,0 +1,905 @@
+{
+  "algo": "mixed_generic",
+  "candidates": [
+    {
+      "id": 1,
+      "hparams": {
+        "cxpb": 0.7724995350546705,
+        "mutation_rate": 0.1319235759981131,
+        "mutpb": 0.2303085187384754,
+        "selector_mutation_rate": 0.1798968291012524
+      }
+    },
+    {
+      "id": 2,
+      "hparams": {
+        "cxpb": 0.7002720635534931,
+        "mutation_rate": 0.0748585655698702,
+        "mutpb": 0.26750842965153654,
+        "selector_mutation_rate": 0.15173353471785553
+      }
+    },
+    {
+      "id": 3,
+      "hparams": {
+        "cxpb": 0.6630977128937495,
+        "mutation_rate": 0.12710248300609694,
+        "mutpb": 0.17605175613472995,
+        "selector_mutation_rate": 0.14700785610302874
+      }
+    },
+    {
+      "id": 4,
+      "hparams": {
+        "cxpb": 0.6805038209677339,
+        "mutation_rate": 0.14749060245683193,
+        "mutpb": 0.05887390154285976,
+        "selector_mutation_rate": 0.03604302888896319
+      }
+    },
+    {
+      "id": 5,
+      "hparams": {
+        "cxpb": 0.8384261543244139,
+        "mutation_rate": 0.18437155358896531,
+        "mutpb": 0.13813732708423565,
+        "selector_mutation_rate": 0.1717090499506981
+      }
+    },
+    {
+      "id": 6,
+      "hparams": {
+        "cxpb": 0.5550331533464481,
+        "mutation_rate": 0.1601669015973706,
+        "mutpb": 0.15547525283524044,
+        "selector_mutation_rate": 0.13593989293166378
+      }
+    },
+    {
+      "id": 7,
+      "hparams": {
+        "cxpb": 0.6095832270240122,
+        "mutation_rate": 0.07797257324870202,
+        "mutpb": 0.2896626199050666,
+        "selector_mutation_rate": 0.17551066123340964
+      }
+    },
+    {
+      "id": 8,
+      "hparams": {
+        "cxpb": 0.7256557458693382,
+        "mutation_rate": 0.17118611403622128,
+        "mutpb": 0.1542183872947015,
+        "selector_mutation_rate": 0.031072734713538774
+      }
+    },
+    {
+      "id": 9,
+      "hparams": {
+        "cxpb": 0.5315439727217478,
+        "mutation_rate": 0.16760573727644873,
+        "mutpb": 0.2530932079573048,
+        "selector_mutation_rate": 0.05829642409646004
+      }
+    },
+    {
+      "id": 10,
+      "hparams": {
+        "cxpb": 0.7118927092548872,
+        "mutation_rate": 0.1943568293049329,
+        "mutpb": 0.26079700284716234,
+        "selector_mutation_rate": 0.08873660571737463
+      }
+    },
+    {
+      "id": 11,
+      "hparams": {
+        "cxpb": 0.6507206525798022,
+        "mutation_rate": 0.08907939062267566,
+        "mutpb": 0.17844761793920877,
+        "selector_mutation_rate": 0.09833511875957376
+      }
+    },
+    {
+      "id": 12,
+      "hparams": {
+        "cxpb": 0.4916293925588916,
+        "mutation_rate": 0.03271125814043584,
+        "mutpb": 0.2417053182076328,
+        "selector_mutation_rate": 0.028327357000546914
+      }
+    },
+    {
+      "id": 13,
+      "hparams": {
+        "cxpb": 0.7415324752727414,
+        "mutation_rate": 0.18730867999340253,
+        "mutpb": 0.2662073097684677,
+        "selector_mutation_rate": 0.10205882500621728
+      }
+    },
+    {
+      "id": 14,
+      "hparams": {
+        "cxpb": 0.4399143701251267,
+        "mutation_rate": 0.11233524151599339,
+        "mutpb": 0.22281786224845335,
+        "selector_mutation_rate": 0.1267333822959689
+      }
+    },
+    {
+      "id": 15,
+      "hparams": {
+        "cxpb": 0.41829186888108716,
+        "mutation_rate": 0.02907827191788434,
+        "mutpb": 0.23529352593985198,
+        "selector_mutation_rate": 0.009491519165780556
+      }
+    },
+    {
+      "id": 16,
+      "hparams": {
+        "cxpb": 0.5740998202967691,
+        "mutation_rate": 0.030488725203246237,
+        "mutpb": 0.06588611744326885,
+        "selector_mutation_rate": 0.18165310301532772
+      }
+    },
+    {
+      "id": 17,
+      "hparams": {
+        "cxpb": 0.3837454702548465,
+        "mutation_rate": 0.007822229509293208,
+        "mutpb": 0.1984314352297346,
+        "selector_mutation_rate": 0.10429717642430161
+      }
+    },
+    {
+      "id": 18,
+      "hparams": {
+        "cxpb": 0.6277506976613665,
+        "mutation_rate": 0.08056576744475684,
+        "mutpb": 0.1023311824982557,
+        "selector_mutation_rate": 0.14269072004912184
+      }
+    },
+    {
+      "id": 19,
+      "hparams": {
+        "cxpb": 0.38176240884540047,
+        "mutation_rate": 0.15104413680919995,
+        "mutpb": 0.29347378294893084,
+        "selector_mutation_rate": 0.0839530160458314
+      }
+    },
+    {
+      "id": 20,
+      "hparams": {
+        "cxpb": 0.6010992328577038,
+        "mutation_rate": 0.044451658682522995,
+        "mutpb": 0.2584001976771233,
+        "selector_mutation_rate": 0.11843685941741713
+      }
+    },
+    {
+      "id": 21,
+      "hparams": {
+        "cxpb": 0.5975182167871715,
+        "mutation_rate": 0.08481052956064238,
+        "mutpb": 0.1306662569261282,
+        "selector_mutation_rate": 0.05655415374033205
+      }
+    },
+    {
+      "id": 22,
+      "hparams": {
+        "cxpb": 0.2848294276832413,
+        "mutation_rate": 0.043194132554863894,
+        "mutpb": 0.08652098788646942,
+        "selector_mutation_rate": 0.14062166549739225
+      }
+    },
+    {
+      "id": 23,
+      "hparams": {
+        "cxpb": 0.5589408861172408,
+        "mutation_rate": 0.1031575865200775,
+        "mutpb": 0.16381524932345398,
+        "selector_mutation_rate": 0.09229112809852871
+      }
+    },
+    {
+      "id": 24,
+      "hparams": {
+        "cxpb": 0.5075302106893034,
+        "mutation_rate": 0.036795706737870526,
+        "mutpb": 0.26406814762864805,
+        "selector_mutation_rate": 0.012756601638193595
+      }
+    },
+    {
+      "id": 25,
+      "hparams": {
+        "cxpb": 0.6665902873381044,
+        "mutation_rate": 0.06767384447051332,
+        "mutpb": 0.2339507186667617,
+        "selector_mutation_rate": 0.07275567508291002
+      }
+    },
+    {
+      "id": 26,
+      "hparams": {
+        "cxpb": 0.5114769354276069,
+        "mutation_rate": 0.024989009761871787,
+        "mutpb": 0.09193060055060112,
+        "selector_mutation_rate": 0.16523039801732087
+      }
+    },
+    {
+      "id": 27,
+      "hparams": {
+        "cxpb": 0.4609130734338731,
+        "mutation_rate": 0.0909719528851738,
+        "mutpb": 0.15986462265392326,
+        "selector_mutation_rate": 0.0051413358728671765
+      }
+    },
+    {
+      "id": 28,
+      "hparams": {
+        "cxpb": 0.2921143914454625,
+        "mutation_rate": 0.09313407590947446,
+        "mutpb": 0.09740236709424031,
+        "selector_mutation_rate": 0.042386737161779056
+      }
+    },
+    {
+      "id": 29,
+      "hparams": {
+        "cxpb": 0.2700478527249346,
+        "mutation_rate": 0.015611157082270694,
+        "mutpb": 0.1170744932460092,
+        "selector_mutation_rate": 0.036740392539261785
+      }
+    },
+    {
+      "id": 30,
+      "hparams": {
+        "cxpb": 0.2527042525546004,
+        "mutation_rate": 0.17575826925465,
+        "mutpb": 0.10386666432662388,
+        "selector_mutation_rate": 0.11472341248574563
+      }
+    },
+    {
+      "id": 31,
+      "hparams": {
+        "cxpb": 0.6443698430630759,
+        "mutation_rate": 0.06030646318675866,
+        "mutpb": 0.16072007037147218,
+        "selector_mutation_rate": 0.18456089799690714
+      }
+    },
+    {
+      "id": 32,
+      "hparams": {
+        "cxpb": 0.5623801290225292,
+        "mutation_rate": 0.11987454370051691,
+        "mutpb": 0.12555614641594906,
+        "selector_mutation_rate": 0.12855997505920105
+      }
+    },
+    {
+      "id": 33,
+      "hparams": {
+        "cxpb": 0.6170834367663185,
+        "mutation_rate": 0.15584353878743043,
+        "mutpb": 0.13315136790504623,
+        "selector_mutation_rate": 0.08899304151392516
+      }
+    },
+    {
+      "id": 34,
+      "hparams": {
+        "cxpb": 0.768355625138572,
+        "mutation_rate": 0.018699632057811177,
+        "mutpb": 0.07557013741486832,
+        "selector_mutation_rate": 0.03887962437796918
+      }
+    },
+    {
+      "id": 35,
+      "hparams": {
+        "cxpb": 0.27594684960008514,
+        "mutation_rate": 0.10002518056842309,
+        "mutpb": 0.2726376607111358,
+        "selector_mutation_rate": 0.019299614364771765
+      }
+    },
+    {
+      "id": 36,
+      "hparams": {
+        "cxpb": 0.5821421080490672,
+        "mutation_rate": 0.11176755207292928,
+        "mutpb": 0.2505492703487329,
+        "selector_mutation_rate": 0.05061610426082193
+      }
+    },
+    {
+      "id": 37,
+      "hparams": {
+        "cxpb": 0.4446776480413567,
+        "mutation_rate": 0.06956238321844833,
+        "mutpb": 0.24733135719480964,
+        "selector_mutation_rate": 0.16134688194263763
+      }
+    },
+    {
+      "id": 38,
+      "hparams": {
+        "cxpb": 0.4510494958015844,
+        "mutation_rate": 0.12024233723527751,
+        "mutpb": 0.20082029008689944,
+        "selector_mutation_rate": 0.045753105052850296
+      }
+    },
+    {
+      "id": 39,
+      "hparams": {
+        "cxpb": 0.6288712855292389,
+        "mutation_rate": 0.03850272735575209,
+        "mutpb": 0.14338159943931375,
+        "selector_mutation_rate": 0.18258797942404698
+      }
+    },
+    {
+      "id": 40,
+      "hparams": {
+        "cxpb": 0.7883393996675847,
+        "mutation_rate": 0.05223204472528529,
+        "mutpb": 0.1275647414051631,
+        "selector_mutation_rate": 0.04902706578382233
+      }
+    },
+    {
+      "id": 41,
+      "hparams": {
+        "cxpb": 0.4118791270408935,
+        "mutation_rate": 0.1459247603341897,
+        "mutpb": 0.0890438216615955,
+        "selector_mutation_rate": 0.0704570695408344
+      }
+    },
+    {
+      "id": 42,
+      "hparams": {
+        "cxpb": 0.7825472580958124,
+        "mutation_rate": 0.18924199873037265,
+        "mutpb": 0.23997654243459443,
+        "selector_mutation_rate": 0.06153890684216289
+      }
+    },
+    {
+      "id": 43,
+      "hparams": {
+        "cxpb": 0.8055867208009926,
+        "mutation_rate": 0.059467115311764615,
+        "mutpb": 0.20633940332649647,
+        "selector_mutation_rate": 0.07536719805886519
+      }
+    },
+    {
+      "id": 44,
+      "hparams": {
+        "cxpb": 0.42916053559659023,
+        "mutation_rate": 0.06275532405449107,
+        "mutpb": 0.28590845012929583,
+        "selector_mutation_rate": 0.14503125979976694
+      }
+    },
+    {
+      "id": 45,
+      "hparams": {
+        "cxpb": 0.37194911168626876,
+        "mutation_rate": 0.12834131967980816,
+        "mutpb": 0.050503127063756606,
+        "selector_mutation_rate": 0.11106875244639902
+      }
+    },
+    {
+      "id": 46,
+      "hparams": {
+        "cxpb": 0.500101100937401,
+        "mutation_rate": 0.055459267383295686,
+        "mutpb": 0.21868323731628675,
+        "selector_mutation_rate": 0.16020705630640816
+      }
+    },
+    {
+      "id": 47,
+      "hparams": {
+        "cxpb": 0.29063642030601544,
+        "mutation_rate": 0.011036537904945472,
+        "mutpb": 0.19432763937668085,
+        "selector_mutation_rate": 0.0857111560106003
+      }
+    },
+    {
+      "id": 48,
+      "hparams": {
+        "cxpb": 0.3605907629441006,
+        "mutation_rate": 0.1918043143270124,
+        "mutpb": 0.19655304700092097,
+        "selector_mutation_rate": 0.15644184284676407
+      }
+    },
+    {
+      "id": 49,
+      "hparams": {
+        "cxpb": 0.6751267457205359,
+        "mutation_rate": 0.15193974726634787,
+        "mutpb": 0.17216828260279693,
+        "selector_mutation_rate": 0.1705428868708272
+      }
+    },
+    {
+      "id": 50,
+      "hparams": {
+        "cxpb": 0.32423042771748894,
+        "mutation_rate": 0.07280330611049991,
+        "mutpb": 0.12058111013392168,
+        "selector_mutation_rate": 0.19601487219242283
+      }
+    },
+    {
+      "id": 51,
+      "hparams": {
+        "cxpb": 0.7134636634212828,
+        "mutation_rate": 0.16887375464605986,
+        "mutpb": 0.21097590905500196,
+        "selector_mutation_rate": 0.11341807468135302
+      }
+    },
+    {
+      "id": 52,
+      "hparams": {
+        "cxpb": 0.4765501328512699,
+        "mutation_rate": 0.02797678119710668,
+        "mutpb": 0.20390553697707758,
+        "selector_mutation_rate": 0.0672773722732643
+      }
+    },
+    {
+      "id": 53,
+      "hparams": {
+        "cxpb": 0.8476297145250016,
+        "mutation_rate": 0.06651808585965881,
+        "mutpb": 0.06195761872214717,
+        "selector_mutation_rate": 0.16705991209018622
+      }
+    },
+    {
+      "id": 54,
+      "hparams": {
+        "cxpb": 0.6110896519290789,
+        "mutation_rate": 0.13521512199772273,
+        "mutpb": 0.1192910640281599,
+        "selector_mutation_rate": 0.12017020835651361
+      }
+    },
+    {
+      "id": 55,
+      "hparams": {
+        "cxpb": 0.7560129821697973,
+        "mutation_rate": 0.1581344989306536,
+        "mutpb": 0.1455269047870668,
+        "selector_mutation_rate": 0.02198925419752591
+      }
+    },
+    {
+      "id": 56,
+      "hparams": {
+        "cxpb": 0.6879225408128564,
+        "mutation_rate": 0.14240829509103417,
+        "mutpb": 0.27609352639930007,
+        "selector_mutation_rate": 0.028501624132407196
+      }
+    },
+    {
+      "id": 57,
+      "hparams": {
+        "cxpb": 0.46741984523375707,
+        "mutation_rate": 0.16343573522726437,
+        "mutpb": 0.13535816413307336,
+        "selector_mutation_rate": 0.055026832043370125
+      }
+    },
+    {
+      "id": 58,
+      "hparams": {
+        "cxpb": 0.401587929003975,
+        "mutation_rate": 0.17737189086918093,
+        "mutpb": 0.2566576288695531,
+        "selector_mutation_rate": 0.18723829893301006
+      }
+    },
+    {
+      "id": 59,
+      "hparams": {
+        "cxpb": 0.3360061231815747,
+        "mutation_rate": 0.024184962348248372,
+        "mutpb": 0.24286958500414974,
+        "selector_mutation_rate": 0.09952181464497316
+      }
+    },
+    {
+      "id": 60,
+      "hparams": {
+        "cxpb": 0.7954979542169451,
+        "mutation_rate": 0.05652037656270014,
+        "mutpb": 0.1893220731200364,
+        "selector_mutation_rate": 0.06183413994409552
+      }
+    },
+    {
+      "id": 61,
+      "hparams": {
+        "cxpb": 0.5325584058886871,
+        "mutation_rate": 0.10705405891528216,
+        "mutpb": 0.18030307975251764,
+        "selector_mutation_rate": 0.018348026046852924
+      }
+    },
+    {
+      "id": 62,
+      "hparams": {
+        "cxpb": 0.5381011968239726,
+        "mutation_rate": 0.0981832923193862,
+        "mutpb": 0.10841867329102547,
+        "selector_mutation_rate": 0.04728367409282054
+      }
+    },
+    {
+      "id": 63,
+      "hparams": {
+        "cxpb": 0.5246235468832618,
+        "mutation_rate": 0.1927804653301654,
+        "mutpb": 0.2707920713005903,
+        "selector_mutation_rate": 0.14757413191938715
+      }
+    },
+    {
+      "id": 64,
+      "hparams": {
+        "cxpb": 0.4572456051677989,
+        "mutation_rate": 0.1023677740866721,
+        "mutpb": 0.056903679823237616,
+        "selector_mutation_rate": 0.07346875782342456
+      }
+    },
+    {
+      "id": 65,
+      "hparams": {
+        "cxpb": 0.7225517276303547,
+        "mutation_rate": 0.18169863278716758,
+        "mutpb": 0.16611912550465202,
+        "selector_mutation_rate": 0.1920096518710568
+      }
+    },
+    {
+      "id": 66,
+      "hparams": {
+        "cxpb": 0.5454484071684939,
+        "mutation_rate": 0.17362267142199558,
+        "mutpb": 0.22046019015648616,
+        "selector_mutation_rate": 0.19754903862576972
+      }
+    },
+    {
+      "id": 67,
+      "hparams": {
+        "cxpb": 0.2654805147325325,
+        "mutation_rate": 0.19619103636933607,
+        "mutpb": 0.18448499285743258,
+        "selector_mutation_rate": 0.08223497835337713
+      }
+    },
+    {
+      "id": 68,
+      "hparams": {
+        "cxpb": 0.7458602344530574,
+        "mutation_rate": 0.15344532501235764,
+        "mutpb": 0.16884777206195056,
+        "selector_mutation_rate": 0.02414413123731805
+      }
+    },
+    {
+      "id": 69,
+      "hparams": {
+        "cxpb": 0.6902219220817587,
+        "mutation_rate": 0.14451533228394314,
+        "mutpb": 0.21292412315730042,
+        "selector_mutation_rate": 0.1893213474743434
+      }
+    },
+    {
+      "id": 70,
+      "hparams": {
+        "cxpb": 0.4819356262251281,
+        "mutation_rate": 0.16548706020644183,
+        "mutpb": 0.17464298325724778,
+        "selector_mutation_rate": 0.11771476510484252
+      }
+    },
+    {
+      "id": 71,
+      "hparams": {
+        "cxpb": 0.30889642121839006,
+        "mutation_rate": 0.13102661479653338,
+        "mutpb": 0.22987622434695026,
+        "selector_mutation_rate": 0.149612737805719
+      }
+    },
+    {
+      "id": 72,
+      "hparams": {
+        "cxpb": 0.3294936617309255,
+        "mutation_rate": 0.07521295277314632,
+        "mutpb": 0.2998947479500286,
+        "selector_mutation_rate": 0.007774537981080777
+      }
+    },
+    {
+      "id": 73,
+      "hparams": {
+        "cxpb": 0.8101965829126209,
+        "mutation_rate": 0.08224289712608877,
+        "mutpb": 0.2848738195110214,
+        "selector_mutation_rate": 0.1923579427001622
+      }
+    },
+    {
+      "id": 74,
+      "hparams": {
+        "cxpb": 0.7632093425179552,
+        "mutation_rate": 0.02239338633388779,
+        "mutpb": 0.14969944959477172,
+        "selector_mutation_rate": 0.13860192374006838
+      }
+    },
+    {
+      "id": 75,
+      "hparams": {
+        "cxpb": 0.7314883576960947,
+        "mutation_rate": 0.09476148741140236,
+        "mutpb": 0.2162709619765396,
+        "selector_mutation_rate": 0.09550641925514884
+      }
+    },
+    {
+      "id": 76,
+      "hparams": {
+        "cxpb": 0.48964735449305735,
+        "mutation_rate": 0.013656293726649085,
+        "mutpb": 0.11251109688124368,
+        "selector_mutation_rate": 0.13018956989336633
+      }
+    },
+    {
+      "id": 77,
+      "hparams": {
+        "cxpb": 0.3494579511004383,
+        "mutation_rate": 0.050808508033248406,
+        "mutpb": 0.11129123576726113,
+        "selector_mutation_rate": 0.10552960194650095
+      }
+    },
+    {
+      "id": 78,
+      "hparams": {
+        "cxpb": 0.657753642478471,
+        "mutation_rate": 0.19827449418044665,
+        "mutpb": 0.22589585882857965,
+        "selector_mutation_rate": 0.024859252990036287
+      }
+    },
+    {
+      "id": 79,
+      "hparams": {
+        "cxpb": 0.8150486341556524,
+        "mutation_rate": 0.04058361921310982,
+        "mutpb": 0.0709570773796963,
+        "selector_mutation_rate": 0.08012622422497101
+      }
+    },
+    {
+      "id": 80,
+      "hparams": {
+        "cxpb": 0.8360153105522646,
+        "mutation_rate": 0.18025287017848793,
+        "mutpb": 0.07912348563071414,
+        "selector_mutation_rate": 0.1778195976688928
+      }
+    },
+    {
+      "id": 81,
+      "hparams": {
+        "cxpb": 0.39877134641788403,
+        "mutation_rate": 0.009831184903134924,
+        "mutpb": 0.09769936095630573,
+        "selector_mutation_rate": 0.15479100592428174
+      }
+    },
+    {
+      "id": 82,
+      "hparams": {
+        "cxpb": 0.25860356622763625,
+        "mutation_rate": 0.04891809124942265,
+        "mutpb": 0.29117560931477593,
+        "selector_mutation_rate": 0.1237749723631152
+      }
+    },
+    {
+      "id": 83,
+      "hparams": {
+        "cxpb": 0.3646189123125875,
+        "mutation_rate": 0.10588724767451527,
+        "mutpb": 0.05472325398696283,
+        "selector_mutation_rate": 0.0332514509414052
+      }
+    },
+    {
+      "id": 84,
+      "hparams": {
+        "cxpb": 0.6354273668098568,
+        "mutation_rate": 0.12376027029126842,
+        "mutpb": 0.1919396142230903,
+        "selector_mutation_rate": 0.01346484105429548
+      }
+    },
+    {
+      "id": 85,
+      "hparams": {
+        "cxpb": 0.35593103435025725,
+        "mutation_rate": 0.018488996662055262,
+        "mutpb": 0.27957100359762393,
+        "selector_mutation_rate": 0.13297394130280518
+      }
+    },
+    {
+      "id": 86,
+      "hparams": {
+        "cxpb": 0.7534088611369386,
+        "mutation_rate": 0.04733039356148633,
+        "mutpb": 0.1867150537989663,
+        "selector_mutation_rate": 0.04114398427792725
+      }
+    },
+    {
+      "id": 87,
+      "hparams": {
+        "cxpb": 0.31425026410219437,
+        "mutation_rate": 0.11424282735213097,
+        "mutpb": 0.2969864565755386,
+        "selector_mutation_rate": 0.19929993017593184
+      }
+    },
+    {
+      "id": 88,
+      "hparams": {
+        "cxpb": 0.3036278132620325,
+        "mutation_rate": 0.006276110455564441,
+        "mutpb": 0.10521390656719393,
+        "selector_mutation_rate": 0.13393668266521463
+      }
+    },
+    {
+      "id": 89,
+      "hparams": {
+        "cxpb": 0.516225025248473,
+        "mutation_rate": 0.13654591017036763,
+        "mutpb": 0.15233216547163245,
+        "selector_mutation_rate": 0.0939652418724478
+      }
+    },
+    {
+      "id": 90,
+      "hparams": {
+        "cxpb": 0.412027013277837,
+        "mutation_rate": 0.10888807822676425,
+        "mutpb": 0.08057358455407042,
+        "selector_mutation_rate": 0.1639445255807926
+      }
+    },
+    {
+      "id": 91,
+      "hparams": {
+        "cxpb": 0.8267281591071803,
+        "mutation_rate": 0.16245717222037434,
+        "mutpb": 0.09283746917792259,
+        "selector_mutation_rate": 0.12547360104564906
+      }
+    },
+    {
+      "id": 92,
+      "hparams": {
+        "cxpb": 0.8258813732356222,
+        "mutation_rate": 0.12427898269161043,
+        "mutpb": 0.2816521029404884,
+        "selector_mutation_rate": 0.07886117922677013
+      }
+    },
+    {
+      "id": 93,
+      "hparams": {
+        "cxpb": 0.3909933831129686,
+        "mutation_rate": 0.08616219059494169,
+        "mutpb": 0.06817631774184,
+        "selector_mutation_rate": 0.06453569720491022
+      }
+    },
+    {
+      "id": 94,
+      "hparams": {
+        "cxpb": 0.3458071356377593,
+        "mutation_rate": 0.06512310958080013,
+        "mutpb": 0.07362036356803447,
+        "selector_mutation_rate": 0.11011886882067293
+      }
+    },
+    {
+      "id": 95,
+      "hparams": {
+        "cxpb": 0.5871697835228504,
+        "mutation_rate": 0.18485228520802752,
+        "mutpb": 0.08399671245522083,
+        "selector_mutation_rate": 0.15762968334164706
+      }
+    },
+    {
+      "id": 96,
+      "hparams": {
+        "cxpb": 0.6962045730244297,
+        "mutation_rate": 0.035778743646934626,
+        "mutpb": 0.2498781941653836,
+        "selector_mutation_rate": 0.1080849016514891
+      }
+    },
+    {
+      "id": 97,
+      "hparams": {
+        "cxpb": 0.4355716093297053,
+        "mutation_rate": 0.13774348577190804,
+        "mutpb": 0.2081067023302376,
+        "selector_mutation_rate": 0.015656167648838114
+      }
+    },
+    {
+      "id": 98,
+      "hparams": {
+        "cxpb": 0.31999557052438227,
+        "mutation_rate": 0.14113671527797936,
+        "mutpb": 0.12436282704257176,
+        "selector_mutation_rate": 0.1736790120214301
+      }
+    },
+    {
+      "id": 99,
+      "hparams": {
+        "cxpb": 0.5681729282712629,
+        "mutation_rate": 0.08844799179750852,
+        "mutpb": 0.06338221301612183,
+        "selector_mutation_rate": 0.06832109689506194
+      }
+    },
+    {
+      "id": 100,
+      "hparams": {
+        "cxpb": 0.8006294318440735,
+        "mutation_rate": 0.11791424979178465,
+        "mutpb": 0.14153526939985112,
+        "selector_mutation_rate": 0.052007700782457277
+      }
+    }
+  ]
+}
