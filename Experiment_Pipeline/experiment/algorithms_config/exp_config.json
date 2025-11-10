@@ -69,7 +69,7 @@
         "sel_mutation": 0.065,
         "tail_mutation": 0.02,
         "p_min": 0.3,
-        "tau_percent": 0.05,
+        "tau_percent": 0.1,
         "notes": "Combined macro\u2192micro crossover GA"
     },
     "macro": {
