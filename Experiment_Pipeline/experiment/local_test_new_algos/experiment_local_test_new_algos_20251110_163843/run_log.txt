@@ -1,64 +1,0 @@
-Logging enabled at: local_test_new_algos\experiment_local_test_new_algos_20251110_163843\run_log.txt
-
-Building environments and loading configurations...
- Environment database saved to: local_test_new_algos\experiment_local_test_new_algos_20251110_163843\environment_database.csv
-Algorithms selected: flat, generic, joint, pso, random, macro_micro, macro, micro, recomb, no_crossover, mixed_generic
-Starting experiments...
-
- Global experiment summary:
-   → Algorithms detected: flat, generic, joint, pso, random, macro_micro, macro, micro, recomb, no_crossover, mixed_generic
-   → Total environments: 2
-   → Runs per algorithm: 2
-   → Generations: 3
-------------------------------------------------------------
-
-================================================================================
- ENV 1/2: Linear_standard | Seed: 1042
-================================================================================
-
- Algorithms to run on Linear_standard: flat, generic, joint, pso, random, macro_micro, macro, micro, recomb, no_crossover, mixed_generic
- Starting 22 tasks on environment 'Linear_standard'...
- flat | Linear_standard | Run 2 | Best=39.3500 | Time=110.6s | seed=476641
-C:\Users\andre\Repositories\FTZ_model_2.0\Experiment_Pipeline\experiment\run_test_env.py:183: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
-  db_df = pd.concat([db_df, pd.DataFrame([res])], ignore_index=True)
-Progress: 1/22 (4.5%) | Elapsed: 112.9s flat | Linear_standard | Run 1 | Best=39.3500 | Time=111.8s | seed=46859
-Progress: 2/22 (9.1%) | Elapsed: 114.0s generic | Linear_standard | Run 2 | Best=39.3500 | Time=116.5s | seed=497761
-Progress: 3/22 (13.6%) | Elapsed: 118.8s generic | Linear_standard | Run 1 | Best=39.3500 | Time=118.0s | seed=36991
-Progress: 4/22 (18.2%) | Elapsed: 120.3s pso | Linear_standard | Run 1 | Best=39.0500 | Time=77.2s | seed=43759
-Progress: 5/22 (22.7%) | Elapsed: 196.1s pso | Linear_standard | Run 2 | Best=39.0500 | Time=77.4s | seed=490993
-Progress: 6/22 (27.3%) | Elapsed: 197.7s joint | Linear_standard | Run 1 | Best=39.3500 | Time=146.8s | seed=22639
-Progress: 7/22 (31.8%) | Elapsed: 259.6s joint | Linear_standard | Run 2 | Best=39.3500 | Time=148.1s | seed=500861
-Progress: 8/22 (36.4%) | Elapsed: 262.1s random | Linear_standard | Run 1 | Best=39.2000 | Time=168.7s | seed=43759
-Progress: 9/22 (40.9%) | Elapsed: 364.8s random | Linear_standard | Run 2 | Best=39.3500 | Time=168.8s | seed=490993
-Progress: 10/22 (45.5%) | Elapsed: 366.4s macro_micro | Linear_standard | Run 1 | Best=39.3500 | Time=162.6s | seed=22639
-Progress: 11/22 (50.0%) | Elapsed: 422.2s macro_micro | Linear_standard | Run 2 | Best=39.3500 | Time=166.8s | seed=500861
-Progress: 12/22 (54.5%) | Elapsed: 428.8s macro | Linear_standard | Run 1 | Best=39.3500 | Time=251.7s | seed=43759
-Progress: 13/22 (59.1%) | Elapsed: 616.5s macro | Linear_standard | Run 2 | Best=39.3500 | Time=252.3s | seed=490993
-Progress: 14/22 (63.6%) | Elapsed: 618.8s micro | Linear_standard | Run 1 | Best=39.3500 | Time=260.0s | seed=22639
-Progress: 15/22 (68.2%) | Elapsed: 682.2s micro | Linear_standard | Run 2 | Best=39.3500 | Time=260.0s | seed=500861
-Progress: 16/22 (72.7%) | Elapsed: 688.8s recomb | Linear_standard | Run 1 | Best=39.3500 | Time=261.0s | seed=43759
-Progress: 17/22 (77.3%) | Elapsed: 877.6s recomb | Linear_standard | Run 2 | Best=39.3500 | Time=260.6s | seed=490993
-Progress: 18/22 (81.8%) | Elapsed: 879.4s no_crossover | Linear_standard | Run 1 | Best=39.2000 | Time=243.0s | seed=22639
-Progress: 19/22 (86.4%) | Elapsed: 925.2s no_crossover | Linear_standard | Run 2 | Best=39.3500 | Time=239.6s | seed=500861
-Progress: 20/22 (90.9%) | Elapsed: 928.4s mixed_generic | Linear_standard | Run 2 | Best=39.3500 | Time=109.1s | seed=490993
-Progress: 21/22 (95.5%) | Elapsed: 988.5s mixed_generic | Linear_standard | Run 1 | Best=39.3500 | Time=111.5s | seed=43759
-Progress: 22/22 (100.0%) | Elapsed: 989.0s
- Finished Linear_standard: 22 runs total in 989.6s
-
-================================================================================
- ENV 2/2: Linear_perturbed | Seed: 2042
-================================================================================
-
- Algorithms to run on Linear_perturbed: flat, generic, joint, pso, random, macro_micro, macro, micro, recomb, no_crossover, mixed_generic
- Starting 22 tasks on environment 'Linear_perturbed'...
- flat | Linear_perturbed | Run 1 | Best=49.7000 | Time=105.7s | seed=466257
-Progress: 1/22 (4.5%) | Elapsed: 110.9s flat | Linear_perturbed | Run 2 | Best=49.7000 | Time=106.3s | seed=60933
-Progress: 2/22 (9.1%) | Elapsed: 111.5s generic | Linear_perturbed | Run 2 | Best=49.4000 | Time=109.1s | seed=58689
-Progress: 3/22 (13.6%) | Elapsed: 114.3s generic | Linear_perturbed | Run 1 | Best=49.7000 | Time=109.4s | seed=454773
-Progress: 4/22 (18.2%) | Elapsed: 114.6s pso | Linear_perturbed | Run 1 | Best=46.7000 | Time=57.1s | seed=464193
-Progress: 5/22 (22.7%) | Elapsed: 171.4s pso | Linear_perturbed | Run 2 | Best=46.8500 | Time=56.9s | seed=49269
-Progress: 6/22 (27.3%) | Elapsed: 171.5s joint | Linear_perturbed | Run 1 | Best=49.7000 | Time=107.5s | seed=466257
-Progress: 7/22 (31.8%) | Elapsed: 218.4s joint | Linear_perturbed | Run 2 | Best=49.7000 | Time=108.4s | seed=60933
-Progress: 8/22 (36.4%) | Elapsed: 219.9s random | Linear_perturbed | Run 1 | Best=49.2500 | Time=115.6s | seed=464193
-Progress: 9/22 (40.9%) | Elapsed: 287.0s random | Linear_perturbed | Run 2 | Best=48.6500 | Time=116.2s | seed=49269
-Progress: 10/22 (45.5%) | Elapsed: 287.7s
