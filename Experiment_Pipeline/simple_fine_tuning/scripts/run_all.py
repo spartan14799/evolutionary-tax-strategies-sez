@@ -63,6 +63,7 @@ from Experiment_Pipeline.simple_fine_tuning.wrappers.baseline_wrapper import run
 from Experiment_Pipeline.simple_fine_tuning.wrappers.micro_wrapper import run_micro_w2
 from Experiment_Pipeline.simple_fine_tuning.wrappers.macro_wrapper import run_macro_w2
 from Experiment_Pipeline.simple_fine_tuning.wrappers.macro_micro_wrapper import run_macro_micro_w2
+from Experiment_Pipeline.simple_fine_tuning.wrappers.mixed_generic_wrapper import run_mixed_generic_w2
 
 
 # ======================================================================================
@@ -186,6 +187,8 @@ def _algo_run(
         res = run_macro_micro_w2(env_dict=env_dict, base_hyperparams=base_hp, candidate_hyperparams=hp, env_id="ft2")
     elif algo == "recomb":
         res = run_recomb_w2(env_dict=env_dict, base_hyperparams=base_hp, candidate_hyperparams=hp, env_id="ft2")
+    elif algo == "mixed_generic":
+        res = run_mixed_generic_w2(env_dict=env_dict, base_hyperparams=base_hp, candidate_hyperparams=hp, env_id="ft2")
     else:
         raise ValueError(f"Unsupported algo: {algo}")
     elapsed = time.time() - t0
@@ -410,7 +413,7 @@ def main() -> None:
     ap.add_argument("--out-base", type=Path, required=True,
                     help="Base output directory. Results go under <out-base>/<algo>/.")
     ap.add_argument("--algos", type=str, default="generic,joint,pso",
-                    help="Comma-separated list: subset of {generic,joint,pso,baseline,micro,macro,macro_micro,recomb}.")
+                    help="Comma-separated list: subset of {generic,joint,pso,baseline,micro,macro,macro_micro,recomb,mixed_generic}.")
     ap.add_argument("--n-jobs", type=int, default=max(1, mp.cpu_count() - 1),
                     help="Parallel workers on this host.")
     ap.add_argument("--num-shards", type=int, default=1,
@@ -446,7 +449,8 @@ def main() -> None:
 
     # Algorithm selection
     algos = [a.strip().lower() for a in str(args.algos).split(",") if a.strip()]
-    valid = {"generic", "joint", "pso", "baseline", "micro", "macro", "macro_micro", "recomb"}
+    valid = {"generic", "joint", "pso", "baseline", "micro", "macro", "macro_micro", "recomb", "mixed_generic"}
+
     for a in algos:
         if a not in valid:
             raise ValueError(f"Unsupported algo in --algos: {a}")
