@@ -1,0 +1,19 @@
+{
+    "timestamp": "2025-11-10 16:38:43",
+    "algorithms_used": [
+        "flat",
+        "generic",
+        "joint",
+        "pso",
+        "random",
+        "macro_micro",
+        "macro",
+        "micro",
+        "recomb",
+        "no_crossover",
+        "mixed_generic"
+    ],
+    "runs_per_algo": 2,
+    "generations": 3,
+    "base_seed": 42
+}

@@ -49,9 +49,9 @@ def no_crossover_w1(
         generations=hp.get("generations", 50),
         popsize=hp.get("popsize", 50),
         parents=hp.get("parents", 20),
-        elite_fraction=hp.get("elite_fraction", 0.25),
+        elite_fraction=hp.get("elite_fraction", 0.01),
         # --- Selection policies ---
-        tourn_size=hp.get("tourn_size", 3),
+        tourn_size=hp.get("tourn_size", 5),
         parent_selection=hp.get("parent_selection", "tournament"),
         mating_selection=hp.get("mating_selection", "pool"),
         # --- Crossover & mutation ---
@@ -59,10 +59,10 @@ def no_crossover_w1(
         lambda_out=hp.get("lambda_out", 0.50),
         p_macro=0.0,
         p_micro=0.0,  # disable micro stage
-        sel_mutation=hp.get("sel_mutation", None),
-        tail_mutation=hp.get("tail_mutation", None),
+        sel_mutation=hp.get("sel_mutation", 0.05),
+        tail_mutation=hp.get("tail_mutation", 0.05),
         p_min=hp.get("p_min", 0.30),
-        tau_percent=hp.get("tau_percent", None),
+        tau_percent=hp.get("tau_percent", 0.05),
         fix_last_gene=hp.get("fix_last_gene", True),
         # --- Logging, reproducibility, and budgets ---
         seed=hp.get("seed", 42),

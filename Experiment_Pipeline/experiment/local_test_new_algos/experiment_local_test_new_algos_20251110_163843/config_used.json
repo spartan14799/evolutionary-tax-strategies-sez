@@ -62,8 +62,8 @@
         "tourn_size": 5,
         "parent_selection": "tournament",
         "mating_selection": "pairwise_tournament",
-        "lambda_in": 0.30,
-        "lambda_out": 0.30,
+        "lambda_in": 0.3,
+        "lambda_out": 0.3,
         "p_macro": 1,
         "p_micro": 1,
         "sel_mutation": 0.065,
@@ -146,14 +146,13 @@
         "notes": "Mutation-only GA variant: no macro or micro crossover operators"
     },
     "mixed_generic": {
-        "cxpb": 0.731,
-        "mutpb": 0.216,
+        "cxpb": 0.73,
+        "mutpb": 0.419,
         "mutation_rate": 0.0094,
         "selector_mutation_rate": 0.095,
         "elitism": 1,
         "notes": "Mixed integer-binary GA using equivalence-class genotype (eq_class_generic)."
     },
-
     "chart_of_accounts": {
         "yaml_name": "chart_of_accounts.yaml"
     },

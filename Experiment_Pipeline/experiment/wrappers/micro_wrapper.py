@@ -52,14 +52,14 @@ def run_micro_w1(
         # --- Selection policies ---
         tourn_size=hp.get("tourn_size", 3),
         parent_selection=hp.get("parent_selection", "tournament"),
-        mating_selection=hp.get("mating_selection", "pool"),
+        mating_selection=hp.get("mating_selection", "pairwise_tournament"),
         # --- Crossover & mutation ---
-        lambda_in=hp.get("lambda_in", 0.25),
-        lambda_out=hp.get("lambda_out", 0.50),
+        lambda_in=hp.get("lambda_in", 0.4),
+        lambda_out=hp.get("lambda_out", 0.3),
         p_macro=0.0,  # disable macro stage
         p_micro=hp.get("p_micro", 1.00),
-        sel_mutation=hp.get("sel_mutation", None),
-        tail_mutation=hp.get("tail_mutation", None),
+        sel_mutation=hp.get("sel_mutation", 0.02),
+        tail_mutation=hp.get("tail_mutation", 0.02),
         p_min=hp.get("p_min", 0.30),
         tau_percent=hp.get("tau_percent", None),
         fix_last_gene=hp.get("fix_last_gene", True),
