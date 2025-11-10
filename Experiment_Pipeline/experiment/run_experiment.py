@@ -67,7 +67,7 @@ def main():
     parser.add_argument(
     "--algos",
     type=str,
-    default="flat,generic,joint,random,pso,macro_micro,macro,micro,recomb,no_crossover",
+    default="flat,generic,joint,random,pso,macro_micro,macro,micro,recomb,no_crossover,mixed_generic",
     help="Comma-separated list of algorithms to run (subset of config).",
     )
     parser.add_argument("--runs", type=int, default=6, help="Number of runs per algorithm.")

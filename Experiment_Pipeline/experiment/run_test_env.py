@@ -8,18 +8,19 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from typing import Dict, Any
 
 # --- Import all wrappers ---
-from Experiment_Pipeline.fine_tuning.wrappers.flat_wrapper import run_flat_w1
-from Experiment_Pipeline.fine_tuning.wrappers.generic_ga_wrapper import run_generic_ga_w1
-from Experiment_Pipeline.fine_tuning.wrappers.joint_wrapper import run_joint_w1
-from Experiment_Pipeline.fine_tuning.wrappers.random_search_wrapper import run_blindrandom_w1
-from Experiment_Pipeline.fine_tuning.wrappers.pso_wrapper import run_pso_w1
+from Experiment_Pipeline.experiment.wrappers.flat_wrapper import run_flat_w1
+from Experiment_Pipeline.experiment.wrappers.generic_ga_wrapper import run_generic_ga_w1
+from Experiment_Pipeline.experiment.wrappers.joint_wrapper import run_joint_w1
+from Experiment_Pipeline.experiment.wrappers.random_search_wrapper import run_blindrandom_w1
+from Experiment_Pipeline.experiment.wrappers.pso_wrapper import run_pso_w1
 
 # --- New Macro–Micro family wrappers ---
-from Experiment_Pipeline.fine_tuning.wrappers.macro_micro_wrapper import run_macro_micro_ga_w1
-from Experiment_Pipeline.fine_tuning.wrappers.macro_wrapper import run_macro_w1
-from Experiment_Pipeline.fine_tuning.wrappers.micro_wrapper import run_micro_w1
-from Experiment_Pipeline.fine_tuning.wrappers.recomb_wrapper import run_recomb_w1
-from Experiment_Pipeline.fine_tuning.wrappers.no_crossover_wrapper import no_crossover_w1
+from Experiment_Pipeline.experiment.wrappers.macro_micro_wrapper import run_macro_micro_ga_w1
+from Experiment_Pipeline.experiment.wrappers.macro_wrapper import run_macro_w1
+from Experiment_Pipeline.experiment.wrappers.micro_wrapper import run_micro_w1
+from Experiment_Pipeline.experiment.wrappers.recomb_wrapper import run_recomb_w1
+from Experiment_Pipeline.experiment.wrappers.no_crossover_wrapper import no_crossover_w1
+from Experiment_Pipeline.experiment.wrappers.mixed_generic import run_mixed_generic_w1
 
 
 # ============================================================================
@@ -128,6 +129,7 @@ def run_test_env(
         "micro": run_micro_w1,
         "recomb": run_recomb_w1,
         "no_crossover": no_crossover_w1,   
+        "mixed_generic": run_mixed_generic_w1,
     }
 
     # Only keep algorithms that are present in configs
