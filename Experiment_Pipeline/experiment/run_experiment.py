@@ -60,8 +60,16 @@ def main():
     parser = argparse.ArgumentParser(
         description="Run full experiment pipeline: build environments and execute algorithms."
     )
-    parser.add_argument("--algos", type=str, default="flat,generic,joint,random,pso",
-                        help="Comma-separated list of algorithms to run (subset of config).")
+
+    # -----------------------------------------------------------------------
+    # Add new algorithms to default CLI list
+    # -----------------------------------------------------------------------
+    parser.add_argument(
+    "--algos",
+    type=str,
+    default="flat,generic,joint,random,pso,macro_micro,macro,micro,recomb,no_crossover",
+    help="Comma-separated list of algorithms to run (subset of config).",
+    )
     parser.add_argument("--runs", type=int, default=6, help="Number of runs per algorithm.")
     parser.add_argument("--gens", type=int, default=100, help="Number of generations per run.")
     parser.add_argument("--seed", type=int, default=42, help="Base random seed.")
@@ -125,8 +133,14 @@ def main():
     # -----------------------------------------------------------------------
     # Export Metadata + Config Snapshot
     # -----------------------------------------------------------------------
-    export_experiment_metadata(exp_dir, config_path, list(algorithms.keys()),
-                               args.runs, args.gens, args.seed)
+    export_experiment_metadata(
+        exp_dir,
+        config_path,
+        list(algorithms.keys()),
+        args.runs,
+        args.gens,
+        args.seed,
+    )
 
     # -----------------------------------------------------------------------
     # Execute Experiments

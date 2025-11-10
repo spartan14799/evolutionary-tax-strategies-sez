@@ -14,6 +14,13 @@ from Experiment_Pipeline.fine_tuning.wrappers.joint_wrapper import run_joint_w1
 from Experiment_Pipeline.fine_tuning.wrappers.random_search_wrapper import run_blindrandom_w1
 from Experiment_Pipeline.fine_tuning.wrappers.pso_wrapper import run_pso_w1
 
+# --- New Macro–Micro family wrappers ---
+from Experiment_Pipeline.fine_tuning.wrappers.macro_micro_wrapper import run_macro_micro_ga_w1
+from Experiment_Pipeline.fine_tuning.wrappers.macro_wrapper import run_macro_w1
+from Experiment_Pipeline.fine_tuning.wrappers.micro_wrapper import run_micro_w1
+from Experiment_Pipeline.fine_tuning.wrappers.recomb_wrapper import run_recomb_w1
+from Experiment_Pipeline.fine_tuning.wrappers.no_crossover_wrapper import no_crossover_w1
+
 
 # ============================================================================
 # Single run executor
@@ -108,7 +115,7 @@ def run_test_env(
         db_df = pd.DataFrame(columns=db_cols)
 
     # ----------------------------------------------------------------------
-    # Define available algorithm wrappers
+    # Define available algorithm wrappers (expanded set)
     # ----------------------------------------------------------------------
     alg_map_all = {
         "flat": run_flat_w1,
@@ -116,6 +123,11 @@ def run_test_env(
         "joint": run_joint_w1,
         "pso": run_pso_w1,
         "random": run_blindrandom_w1,
+        "macro_micro": run_macro_micro_ga_w1,
+        "macro": run_macro_w1,
+        "micro": run_micro_w1,
+        "recomb": run_recomb_w1,
+        "no_crossover": no_crossover_w1,   
     }
 
     # Only keep algorithms that are present in configs
@@ -158,7 +170,7 @@ def run_test_env(
 
             if res["success"]:
                 print(
-                    f"✔ {res['algorithm']} | {env_name} | Run {res['run']} | "
+                    f" {res['algorithm']} | {env_name} | Run {res['run']} | "
                     f"Best={res['best_value']:.4f} | Time={res['elapsed_sec']:.1f}s | seed={res['seed']}"
                 )
             else:
