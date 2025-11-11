@@ -1,0 +1,9 @@
+{
+    "timestamp": "2025-11-10 20:36:03",
+    "algorithms_used": [
+        "macro_micro"
+    ],
+    "runs_per_algo": 40,
+    "generations": 100,
+    "base_seed": 42
+}

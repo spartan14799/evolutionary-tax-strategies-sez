@@ -1,0 +1,116 @@
+Logging enabled at: final_exp_hyperdense_macromicro\experiment_hyperdensyperdense_macromicro_20251110_203603\run_log.txt
+
+Building environments and loading configurations...
+ Environment database saved to: final_exp_hyperdense_macromicro\experiment_hyperdensyperdense_macromicro_20251110_203603\environment_database.csv
+Algorithms selected: macro_micro
+Starting experiments...
+
+ Global experiment summary:
+   → Algorithms detected: macro_micro
+   → Total environments: 2
+   → Runs per algorithm: 40
+   → Generations: 100
+------------------------------------------------------------
+
+================================================================================
+ ENV 1/2: Hyper-Dense_standard | Seed: 1042
+================================================================================
+
+ Algorithms to run on Hyper-Dense_standard: macro_micro
+ Starting 40 tasks on environment 'Hyper-Dense_standard'...
+ macro_micro | Hyper-Dense_standard | Run 1 | Best=16686.8000 | Time=5210.2s | seed=41879
+C:\Users\57305\Documents\FTZ_model_2.0\Experiment_Pipeline\experiment\run_test_env.py:183: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  db_df = pd.concat([db_df, pd.DataFrame([res])], ignore_index=True)
+Progress: 1/40 (2.5%) | Elapsed: 5214.6s macro_micro | Hyper-Dense_standard | Run 2 | Best=16686.8000 | Time=5333.3s | seed=513189
+Progress: 2/40 (5.0%) | Elapsed: 5337.7s macro_micro | Hyper-Dense_standard | Run 6 | Best=16687.7000 | Time=5595.6s | seed=659547
+Progress: 3/40 (7.5%) | Elapsed: 5600.1s macro_micro | Hyper-Dense_standard | Run 7 | Best=16687.2500 | Time=5631.6s | seed=698842
+Progress: 4/40 (10.0%) | Elapsed: 5636.2s macro_micro | Hyper-Dense_standard | Run 3 | Best=16687.7000 | Time=5856.5s | seed=748915
+Progress: 5/40 (12.5%) | Elapsed: 5861.0s macro_micro | Hyper-Dense_standard | Run 4 | Best=16686.3500 | Time=5885.4s | seed=543830
+Progress: 6/40 (15.0%) | Elapsed: 5889.9s macro_micro | Hyper-Dense_standard | Run 5 | Best=16688.6000 | Time=5997.4s | seed=1028425
+Progress: 7/40 (17.5%) | Elapsed: 6001.9s macro_micro | Hyper-Dense_standard | Run 10 | Best=16687.7000 | Time=5075.4s | seed=453058
+Progress: 8/40 (20.0%) | Elapsed: 10675.5s macro_micro | Hyper-Dense_standard | Run 8 | Best=16688.6000 | Time=5715.5s | seed=147708
+Progress: 9/40 (22.5%) | Elapsed: 10930.1s macro_micro | Hyper-Dense_standard | Run 9 | Best=16688.1500 | Time=5720.3s | seed=358740
+Progress: 10/40 (25.0%) | Elapsed: 11058.0s macro_micro | Hyper-Dense_standard | Run 12 | Best=16688.6000 | Time=5418.2s | seed=638675
+Progress: 11/40 (27.5%) | Elapsed: 11279.2s macro_micro | Hyper-Dense_standard | Run 11 | Best=16687.2500 | Time=5824.9s | seed=986305
+Progress: 12/40 (30.0%) | Elapsed: 11461.1s macro_micro | Hyper-Dense_standard | Run 13 | Best=16687.2500 | Time=5638.1s | seed=790096
+Progress: 13/40 (32.5%) | Elapsed: 11527.9s macro_micro | Hyper-Dense_standard | Run 14 | Best=16687.7000 | Time=5937.5s | seed=999924
+Progress: 14/40 (35.0%) | Elapsed: 11939.4s macro_micro | Hyper-Dense_standard | Run 15 | Best=16687.2500 | Time=5613.6s | seed=942891
+Progress: 15/40 (37.5%) | Elapsed: 16289.1s macro_micro | Hyper-Dense_standard | Run 16 | Best=16687.2500 | Time=5423.8s | seed=732321
+Progress: 16/40 (40.0%) | Elapsed: 16353.9s macro_micro | Hyper-Dense_standard | Run 17 | Best=16687.2500 | Time=5665.3s | seed=618587
+Progress: 17/40 (42.5%) | Elapsed: 16723.3s macro_micro | Hyper-Dense_standard | Run 18 | Best=16687.2500 | Time=5737.1s | seed=1041283
+Progress: 18/40 (45.0%) | Elapsed: 17016.2s macro_micro | Hyper-Dense_standard | Run 19 | Best=16687.7000 | Time=5825.4s | seed=452690
+Progress: 19/40 (47.5%) | Elapsed: 17286.5s macro_micro | Hyper-Dense_standard | Run 20 | Best=16687.7000 | Time=6231.4s | seed=653716
+Progress: 20/40 (50.0%) | Elapsed: 17759.3s macro_micro | Hyper-Dense_standard | Run 21 | Best=16686.8000 | Time=5920.1s | seed=411099
+Progress: 21/40 (52.5%) | Elapsed: 17859.5s macro_micro | Hyper-Dense_standard | Run 23 | Best=16687.7000 | Time=5520.2s | seed=390014
+Progress: 22/40 (55.0%) | Elapsed: 21874.1s macro_micro | Hyper-Dense_standard | Run 22 | Best=16687.7000 | Time=5712.7s | seed=449507
+Progress: 23/40 (57.5%) | Elapsed: 22001.7s macro_micro | Hyper-Dense_standard | Run 24 | Best=16687.2500 | Time=5641.7s | seed=411363
+Progress: 24/40 (60.0%) | Elapsed: 22365.0s macro_micro | Hyper-Dense_standard | Run 25 | Best=16687.2500 | Time=5611.3s | seed=817047
+Progress: 25/40 (62.5%) | Elapsed: 22627.6s macro_micro | Hyper-Dense_standard | Run 26 | Best=16687.7000 | Time=5430.2s | seed=424670
+Progress: 26/40 (65.0%) | Elapsed: 22716.7s macro_micro | Hyper-Dense_standard | Run 27 | Best=16686.8000 | Time=5643.7s | seed=795745
+Progress: 27/40 (67.5%) | Elapsed: 23403.0s macro_micro | Hyper-Dense_standard | Run 28 | Best=16687.7000 | Time=5746.9s | seed=333910
+Progress: 28/40 (70.0%) | Elapsed: 23606.4s macro_micro | Hyper-Dense_standard | Run 30 | Best=16688.1500 | Time=5432.4s | seed=437586
+Progress: 29/40 (72.5%) | Elapsed: 27434.1s macro_micro | Hyper-Dense_standard | Run 29 | Best=16686.8000 | Time=5577.1s | seed=663675
+Progress: 30/40 (75.0%) | Elapsed: 27451.2s macro_micro | Hyper-Dense_standard | Run 32 | Best=16688.1500 | Time=5210.3s | seed=462635
+Progress: 31/40 (77.5%) | Elapsed: 27837.9s macro_micro | Hyper-Dense_standard | Run 31 | Best=16686.3500 | Time=5654.0s | seed=561276
+Progress: 32/40 (80.0%) | Elapsed: 28019.0s macro_micro | Hyper-Dense_standard | Run 33 | Best=16688.1500 | Time=5556.0s | seed=1111295
+Progress: 33/40 (82.5%) | Elapsed: 28272.8s macro_micro | Hyper-Dense_standard | Run 34 | Best=16687.7000 | Time=5826.8s | seed=821499
+Progress: 34/40 (85.0%) | Elapsed: 29229.9s macro_micro | Hyper-Dense_standard | Run 35 | Best=16687.7000 | Time=5845.4s | seed=1028773
+Progress: 35/40 (87.5%) | Elapsed: 29451.8s macro_micro | Hyper-Dense_standard | Run 37 | Best=16687.7000 | Time=4646.4s | seed=840672
+Progress: 36/40 (90.0%) | Elapsed: 32097.6s macro_micro | Hyper-Dense_standard | Run 39 | Best=16687.2500 | Time=4338.0s | seed=416249
+Progress: 37/40 (92.5%) | Elapsed: 32357.1s macro_micro | Hyper-Dense_standard | Run 38 | Best=16688.1500 | Time=4584.9s | seed=552089
+Progress: 38/40 (95.0%) | Elapsed: 32422.8s macro_micro | Hyper-Dense_standard | Run 36 | Best=16687.7000 | Time=5054.4s | seed=452351
+Progress: 39/40 (97.5%) | Elapsed: 32488.6s macro_micro | Hyper-Dense_standard | Run 40 | Best=16687.2500 | Time=4252.1s | seed=725617
+Progress: 40/40 (100.0%) | Elapsed: 32524.8s
+ Finished Hyper-Dense_standard: 40 runs total in 32525.2s
+
+================================================================================
+ ENV 2/2: Hyper-Dense_perturbed | Seed: 2042
+================================================================================
+
+ Algorithms to run on Hyper-Dense_perturbed: macro_micro
+ Starting 40 tasks on environment 'Hyper-Dense_perturbed'...
+ macro_micro | Hyper-Dense_perturbed | Run 2 | Best=17373.0500 | Time=5752.8s | seed=57741
+Progress: 1/40 (2.5%) | Elapsed: 5762.0s macro_micro | Hyper-Dense_perturbed | Run 4 | Best=17370.9500 | Time=5786.7s | seed=784959
+Progress: 2/40 (5.0%) | Elapsed: 5795.9s macro_micro | Hyper-Dense_perturbed | Run 7 | Best=17368.7000 | Time=5801.9s | seed=377398
+Progress: 3/40 (7.5%) | Elapsed: 5811.1s macro_micro | Hyper-Dense_perturbed | Run 5 | Best=17370.9500 | Time=5808.6s | seed=110491
+Progress: 4/40 (10.0%) | Elapsed: 5817.8s macro_micro | Hyper-Dense_perturbed | Run 6 | Best=17371.2500 | Time=5811.8s | seed=502073
+Progress: 5/40 (12.5%) | Elapsed: 5821.0s macro_micro | Hyper-Dense_perturbed | Run 3 | Best=17378.0000 | Time=5829.3s | seed=135484
+Progress: 6/40 (15.0%) | Elapsed: 5838.5s macro_micro | Hyper-Dense_perturbed | Run 1 | Best=17368.2500 | Time=5902.0s | seed=449185
+Progress: 7/40 (17.5%) | Elapsed: 5911.1s macro_micro | Hyper-Dense_perturbed | Run 8 | Best=17376.9500 | Time=5777.1s | seed=132903
+Progress: 8/40 (20.0%) | Elapsed: 11539.1s macro_micro | Hyper-Dense_perturbed | Run 12 | Best=17364.5000 | Time=5788.7s | seed=289840
+Progress: 9/40 (22.5%) | Elapsed: 11609.8s macro_micro | Hyper-Dense_perturbed | Run 9 | Best=17375.4500 | Time=5838.3s | seed=830359
+Progress: 10/40 (25.0%) | Elapsed: 11634.2s macro_micro | Hyper-Dense_perturbed | Run 13 | Best=17372.7500 | Time=5839.7s | seed=468504
+Progress: 11/40 (27.5%) | Elapsed: 11678.2s macro_micro | Hyper-Dense_perturbed | Run 11 | Best=17365.1000 | Time=5865.6s | seed=969525
+Progress: 12/40 (30.0%) | Elapsed: 11683.4s macro_micro | Hyper-Dense_perturbed | Run 10 | Best=17373.3500 | Time=5899.3s | seed=532087
+Progress: 13/40 (32.5%) | Elapsed: 11710.4s macro_micro | Hyper-Dense_perturbed | Run 14 | Best=17375.4500 | Time=5825.9s | seed=531177
+Progress: 14/40 (35.0%) | Elapsed: 11737.0s macro_micro | Hyper-Dense_perturbed | Run 15 | Best=17371.4000 | Time=5923.4s | seed=1008725
+Progress: 15/40 (37.5%) | Elapsed: 17462.5s macro_micro | Hyper-Dense_perturbed | Run 17 | Best=17374.4000 | Time=5952.9s | seed=752014
+Progress: 16/40 (40.0%) | Elapsed: 17587.1s macro_micro | Hyper-Dense_perturbed | Run 16 | Best=17373.0500 | Time=6036.1s | seed=941778
+Progress: 17/40 (42.5%) | Elapsed: 17645.8s macro_micro | Hyper-Dense_perturbed | Run 19 | Best=17364.5000 | Time=5971.1s | seed=1132488
+Progress: 18/40 (45.0%) | Elapsed: 17654.5s macro_micro | Hyper-Dense_perturbed | Run 18 | Best=17363.7500 | Time=6002.3s | seed=686272
+Progress: 19/40 (47.5%) | Elapsed: 17680.5s macro_micro | Hyper-Dense_perturbed | Run 20 | Best=17375.4500 | Time=6007.4s | seed=492019
+Progress: 20/40 (50.0%) | Elapsed: 17717.8s macro_micro | Hyper-Dense_perturbed | Run 21 | Best=17372.7500 | Time=6099.6s | seed=203398
+Progress: 21/40 (52.5%) | Elapsed: 17836.6s macro_micro | Hyper-Dense_perturbed | Run 22 | Best=17372.3000 | Time=6227.8s | seed=1088194
+Progress: 22/40 (55.0%) | Elapsed: 23690.3s macro_micro | Hyper-Dense_perturbed | Run 23 | Best=17372.3000 | Time=6252.2s | seed=411209
+Progress: 23/40 (57.5%) | Elapsed: 23839.3s macro_micro | Hyper-Dense_perturbed | Run 27 | Best=17359.4000 | Time=6207.9s | seed=262014
+Progress: 24/40 (60.0%) | Elapsed: 23925.7s macro_micro | Hyper-Dense_perturbed | Run 25 | Best=17373.3500 | Time=6273.6s | seed=291802
+Progress: 25/40 (62.5%) | Elapsed: 23928.2s macro_micro | Hyper-Dense_perturbed | Run 26 | Best=17374.4000 | Time=6302.7s | seed=378304
+Progress: 26/40 (65.0%) | Elapsed: 23983.2s macro_micro | Hyper-Dense_perturbed | Run 24 | Best=17374.4000 | Time=6354.2s | seed=448538
+Progress: 27/40 (67.5%) | Elapsed: 24000.0s macro_micro | Hyper-Dense_perturbed | Run 28 | Best=17370.3500 | Time=6395.1s | seed=292655
+Progress: 28/40 (70.0%) | Elapsed: 24231.7s macro_micro | Hyper-Dense_perturbed | Run 29 | Best=17367.8000 | Time=6003.6s | seed=865070
+Progress: 29/40 (72.5%) | Elapsed: 29693.9s macro_micro | Hyper-Dense_perturbed | Run 30 | Best=17374.5500 | Time=6067.9s | seed=1136736
+Progress: 30/40 (75.0%) | Elapsed: 29907.2s macro_micro | Hyper-Dense_perturbed | Run 31 | Best=17369.7500 | Time=6063.3s | seed=763784
+Progress: 31/40 (77.5%) | Elapsed: 29989.0s macro_micro | Hyper-Dense_perturbed | Run 32 | Best=17375.1500 | Time=6073.2s | seed=480788
+Progress: 32/40 (80.0%) | Elapsed: 30001.4s macro_micro | Hyper-Dense_perturbed | Run 34 | Best=17362.8500 | Time=6081.9s | seed=846160
+Progress: 33/40 (82.5%) | Elapsed: 30082.0s macro_micro | Hyper-Dense_perturbed | Run 33 | Best=17375.4500 | Time=6101.7s | seed=373814
+Progress: 34/40 (85.0%) | Elapsed: 30085.0s macro_micro | Hyper-Dense_perturbed | Run 35 | Best=17377.5500 | Time=6128.2s | seed=451852
+Progress: 35/40 (87.5%) | Elapsed: 30359.9s macro_micro | Hyper-Dense_perturbed | Run 36 | Best=17375.4500 | Time=4764.3s | seed=766371
+Progress: 36/40 (90.0%) | Elapsed: 34458.2s macro_micro | Hyper-Dense_perturbed | Run 37 | Best=17373.5000 | Time=4717.3s | seed=559546
+Progress: 37/40 (92.5%) | Elapsed: 34624.5s macro_micro | Hyper-Dense_perturbed | Run 38 | Best=17370.2000 | Time=4698.4s | seed=945203
+Progress: 38/40 (95.0%) | Elapsed: 34687.4s macro_micro | Hyper-Dense_perturbed | Run 39 | Best=17369.1500 | Time=4717.9s | seed=583695
+Progress: 39/40 (97.5%) | Elapsed: 34719.2s macro_micro | Hyper-Dense_perturbed | Run 40 | Best=17376.5000 | Time=4690.1s | seed=934996
+Progress: 40/40 (100.0%) | Elapsed: 34772.0s
+ Finished Hyper-Dense_perturbed: 40 runs total in 34772.3s
+
+ All environments complete. Consolidated results: final_exp_hyperdense_macromicro\experiment_hyperdensyperdense_macromicro_20251110_203603\results.csv
+Experiment completed. Results saved in: final_exp_hyperdense_macromicro\experiment_hyperdensyperdense_macromicro_20251110_203603
