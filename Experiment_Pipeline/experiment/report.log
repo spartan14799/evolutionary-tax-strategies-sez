@@ -1,8 +1,0 @@
-2025-11-10 16:40:42,077 - pyswarms.discrete.binary - INFO - Optimize for 3 iters with {'c1': 1.4243, 'c2': 2.1965, 'w': 0.9689, 'k': 3, 'p': 2}
-2025-11-10 16:40:43,511 - pyswarms.discrete.binary - INFO - Optimize for 3 iters with {'c1': 1.4243, 'c2': 2.1965, 'w': 0.9689, 'k': 3, 'p': 2}
-2025-11-10 16:41:59,291 - pyswarms.discrete.binary - INFO - Optimization finished | best cost: -39.05, best pos: [1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1]
-2025-11-10 16:42:00,890 - pyswarms.discrete.binary - INFO - Optimization finished | best cost: -38.9, best pos: [1 0 1 0 0 0 0 0 0 0 0 1 0 0 0 1]
-2025-11-10 16:57:07,109 - pyswarms.discrete.binary - INFO - Optimize for 3 iters with {'c1': 1.4243, 'c2': 2.1965, 'w': 0.9689, 'k': 3, 'p': 2}
-2025-11-10 16:57:07,416 - pyswarms.discrete.binary - INFO - Optimize for 3 iters with {'c1': 1.4243, 'c2': 2.1965, 'w': 0.9689, 'k': 3, 'p': 2}
-2025-11-10 16:58:04,171 - pyswarms.discrete.binary - INFO - Optimization finished | best cost: -46.7, best pos: [0 0 1 0 1 1 0 1 1 1 0 1 1 0 0 1]
-2025-11-10 16:58:04,299 - pyswarms.discrete.binary - INFO - Optimization finished | best cost: -45.05, best pos: [0 0 1 0 1 1 1 0 1 1 0 1 0 1 0 1]

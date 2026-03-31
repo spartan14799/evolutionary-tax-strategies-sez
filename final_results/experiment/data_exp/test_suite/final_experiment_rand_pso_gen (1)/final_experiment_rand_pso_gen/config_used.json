@@ -21,7 +21,7 @@
         "alfa": 4,
         "rho": 1.15,
         "min_budget": 1500,
-        "max_budget": 4000,
+        "max_budget": 10000,
         "notes": "Parameters for exponential budget scaling: B = B_min * exp(alfa * (x^rho)), where x is the number of edges in the graph"
     },
     "flat": {
