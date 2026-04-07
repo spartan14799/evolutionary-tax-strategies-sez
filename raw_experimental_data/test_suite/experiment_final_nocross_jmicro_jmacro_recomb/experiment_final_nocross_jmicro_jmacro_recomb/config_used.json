@@ -1,0 +1,178 @@
+{
+    "common": {
+        "fix_last_gene": true,
+        "seed": 42,
+        "verbosity": 2,
+        "log_every": 1,
+        "evals_cap": 10000,
+        "time_limit_sec": null,
+        "notes": "Global parameters shared by all algorithms in this run"
+    },
+    "env_construction": {
+        "base": 100,
+        "m1": 0.01,
+        "m2": 0.1,
+        "m3": 0.25,
+        "n_agents": 3,
+        "perturb_std": 0.1,
+        "ignored_agents": [
+            0
+        ],
+        "alfa": 4,
+        "rho": 1.15,
+        "min_budget": 1500,
+        "max_budget": 10000,
+        "notes": "Parameters for exponential budget scaling: B = B_min * exp(alfa * (x^rho)), where x is the number of edges in the graph"
+    },
+    "flat": {
+        "parents_rate": 0.3,
+        "mutation_rate": 0.05
+    },
+    "generic": {
+        "cxpb": 0.8266,
+        "mutpb": 0.4193,
+        "mutation_rate": 0.01054,
+        "elitism": 1
+    },
+    "joint": {
+        "mode": "graph",
+        "parents_rate": 0.3,
+        "sel_mutation": 0.25,
+        "tail_mutation": 0.02,
+        "per_good_cap": null,
+        "max_index_probe": 8
+    },
+    "pso": {
+        "c1": 1.4243,
+        "c2": 2.1965,
+        "w": 0.9689
+    },
+    "random": {
+        "evals_cap": 5000,
+        "time_limit_sec": null,
+        "fix_last_gene": true,
+        "seed": 42,
+        "notes": "Blind random search with limited evaluations and no adaptive operators"
+    },
+    "macro_micro": {
+        "mode": "graph",
+        "per_good_cap": null,
+        "max_index_probe": 8,
+        "parents": 20,
+        "elite_fraction": 0.01,
+        "tourn_size": 5,
+        "parent_selection": "tournament",
+        "mating_selection": "pairwise_tournament",
+        "lambda_in": 0.3,
+        "lambda_out": 0.3,
+        "p_macro": 1,
+        "p_micro": 1,
+        "sel_mutation": 0.065,
+        "tail_mutation": 0.02,
+        "p_min": 0.3,
+        "tau_percent": 0.05,
+        "notes": "Combined macro\u2192micro crossover GA"
+    },
+    "macro": {
+        "mode": "graph",
+        "per_good_cap": null,
+        "max_index_probe": 8,
+        "parents": 20,
+        "elite_fraction": 0.01,
+        "tourn_size": 5,
+        "parent_selection": "tournament",
+        "mating_selection": "pairwise_tournament",
+        "lambda_in": 0.4,
+        "lambda_out": 0.3,
+        "p_macro": 1.0,
+        "p_micro": 0.0,
+        "sel_mutation": 0.05,
+        "tail_mutation": 0.05,
+        "p_min": 0.3,
+        "tau_percent": 0.05,
+        "notes": "Macro-only GA variant"
+    },
+    "micro": {
+        "mode": "graph",
+        "per_good_cap": null,
+        "max_index_probe": 8,
+        "parents": 20,
+        "elite_fraction": 0.01,
+        "tourn_size": 5,
+        "parent_selection": "tournament",
+        "mating_selection": "pairwise_tournament",
+        "lambda_in": 0.4,
+        "lambda_out": 0.3,
+        "p_macro": 0.0,
+        "p_micro": 1.0,
+        "sel_mutation": 0.02,
+        "tail_mutation": 0.02,
+        "p_min": 0.3,
+        "tau_percent": 0.05,
+        "notes": "Micro-only GA variant"
+    },
+    "recomb": {
+        "mode": "graph",
+        "per_good_cap": null,
+        "max_index_probe": 8,
+        "parents": 20,
+        "elite_fraction": 0.01,
+        "tourn_size": 5,
+        "parent_selection": "tournament",
+        "mating_selection": "pairwise_tournament",
+        "p_recomb": 0.5,
+        "sel_mutation": 0.15,
+        "tail_mutation": 0.035,
+        "p_min": 0.3,
+        "tau_percent": 0.05,
+        "notes": "Uniform recombination-only GA with domain-specific mutation"
+    },
+    "no_crossover": {
+        "mode": "graph",
+        "per_good_cap": null,
+        "max_index_probe": 8,
+        "parents": 20,
+        "elite_fraction": 0.01,
+        "tourn_size": 5,
+        "parent_selection": "tournament",
+        "mating_selection": "pairwise_tournament",
+        "lambda_in": 0.25,
+        "lambda_out": 0.5,
+        "p_macro": 0.0,
+        "p_micro": 0.0,
+        "sel_mutation": 0.05,
+        "tail_mutation": 0.05,
+        "p_min": 0.3,
+        "tau_percent": 0.05,
+        "notes": "Mutation-only GA variant: no macro or micro crossover operators"
+    },
+    "chart_of_accounts": {
+        "yaml_name": "chart_of_accounts.yaml"
+    },
+    "BASE_AGENTS": {
+        "MKT": {
+            "type": "MKT",
+            "inventory_strategy": "FIFO",
+            "firm_related_goods": [],
+            "income_statement_type": "standard",
+            "accounts_yaml_path": null,
+            "price_mapping": 0
+        },
+        "NCT": {
+            "type": "NCT",
+            "inventory_strategy": "FIFO",
+            "firm_related_goods": [],
+            "income_statement_type": "standard",
+            "accounts_yaml_path": null,
+            "price_mapping": 1
+        },
+        "ZF": {
+            "type": "ZF",
+            "inventory_strategy": "FIFO",
+            "firm_related_goods": [],
+            "income_statement_type": "standard",
+            "accounts_yaml_path": null,
+            "price_mapping": 2
+        }
+    }
+}

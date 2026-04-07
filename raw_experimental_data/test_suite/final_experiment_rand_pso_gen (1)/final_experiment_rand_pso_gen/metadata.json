@@ -1,0 +1,11 @@
+{
+    "timestamp": "2025-11-06 22:55:24",
+    "algorithms_used": [
+        "generic",
+        "pso",
+        "random"
+    ],
+    "runs_per_algo": 40,
+    "generations": 100,
+    "base_seed": 42
+}

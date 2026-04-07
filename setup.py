@@ -2,7 +2,7 @@ import sys
 from pipreqs import pipreqs
 
 def main():
-    # Set the path to your repo (use "." for current directory)
+    # Scan the current directory
     path = "."
     print(f"🔍 Scanning directory: {path}")
 
