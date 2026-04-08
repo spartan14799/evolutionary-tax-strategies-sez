@@ -45,7 +45,6 @@ Standard tax analysis is static and rule-based. PTZM instead treats tax systems 
 │   ├── docs/
 │   ├── experiment/
 │   └── fine_tuning/
-├── pytest.ini
 ├── requirements.txt
 ├── src/
 │   ├── __init__.py
