@@ -44,12 +44,12 @@ import numpy as np
 from deap import base, creator, tools
 from scipy.stats import norm
 
-from src.algorithms.ga.common import (
+from src.algorithms.common import (
     detect_prefix_layout_and_sizes,         # Planner-grounded prefix layout
     probe_allowed_indices_via_tx_builder,   # admissible integer alphabet
     _resolve_mutation_rates_simple
 )
-from src.algorithms.ga.common import deap_clone
+from src.algorithms.common import deap_clone
 from src.simulation.economy.economy import Economy
 
 

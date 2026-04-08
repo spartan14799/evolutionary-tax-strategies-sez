@@ -200,7 +200,7 @@ def run_case(case: str = "Base"):
     Execute and display the full GA workflow for the chosen scenario.
     Prints all genomes that achieved the best utility (ties included).
     """
-    from src.algorithms.ga.macro_micro import run_ga_macro_micro
+    from src.algorithms.macro_micro import run_ga_macro_micro
     import numpy as np
 
     # 1️⃣ Build environment

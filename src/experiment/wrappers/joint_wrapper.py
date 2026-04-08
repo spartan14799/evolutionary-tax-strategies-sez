@@ -3,7 +3,7 @@ import numpy as np
 import networkx as nx
 from typing import Dict, List, Tuple, Any
 
-from src.algorithms.ga.equivclass_joint import run_ga_equivclass_joint
+from src.algorithms.equivclass_joint import run_ga_equivclass_joint
 
 def print_result_summary(result: Dict[str, Any], max_list_items: int = 3, max_dict_items: int = 3) -> None:
     """

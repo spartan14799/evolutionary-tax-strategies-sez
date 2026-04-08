@@ -1,5 +1,5 @@
-from src.algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
-from src.algorithms.ga.macro_micro import run_ga_macro_micro  
+from src.algorithms.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.algorithms.macro_micro import run_ga_macro_micro  
 from typing import List, Tuple, Dict, Any
 import numpy as np
 

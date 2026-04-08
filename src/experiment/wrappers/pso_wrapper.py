@@ -4,16 +4,16 @@ import networkx as nx
 from typing import Dict, List, Tuple, Any
 
 
-from src.algorithms.ga.particle_swarm import run_pso
-from src.algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.algorithms.particle_swarm import run_pso
+from src.algorithms.common import make_transactions_builder, calibrate_min_len_via_builder
 
 import time
 import numpy as np
 import networkx as nx
 from typing import Dict, List, Tuple, Any
 
-from src.algorithms.ga.particle_swarm import run_pso
-from src.algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.algorithms.particle_swarm import run_pso
+from src.algorithms.common import make_transactions_builder, calibrate_min_len_via_builder
 
 
 def run_pso_w1(

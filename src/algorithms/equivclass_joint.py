@@ -1,4 +1,4 @@
-# algorithms/ga/joint_original.py
+# algorithms/ga/equivclass_joint.py
 # =============================================================================
 # Purpose
 # =============================================================================
@@ -35,11 +35,11 @@ import random
 from deap import base, creator, tools
 
 from src.simulation.economy.economy import Economy
-from src.algorithms.ga.common import (
+from src.algorithms.common import (
     detect_prefix_layout_and_sizes,         # Planner-grounded prefix layout
     probe_allowed_indices_via_tx_builder,   # admissible integer alphabet
 )
-from src.algorithms.ga.common import deap_clone
+from src.algorithms.common import deap_clone
 
 
 # =============================================================================
@@ -372,7 +372,7 @@ def _extra_population_metrics_phenotype(pop: List[creator.Individual]) -> Dict[s
 # =============================================================================
 # Public API
 # =============================================================================
-def run_joint_original(
+def run_ga_equivclass_joint(
     production_graph,
     pmatrix,
     agents_information,
@@ -380,6 +380,8 @@ def run_joint_original(
     generations: int = 50,
     popsize: int = 50,
     parents: int = 20,
+    elite_fraction: float = 0.25,
+    tourn_size: int = 3,
     sel_mutation: float = 0.25,
     tail_mutation: float = 0.05,
     per_good_cap: Optional[int] = None,
@@ -389,42 +391,94 @@ def run_joint_original(
     verbosity: int = 1,
     log_every: int = 1,
     # --- Budget (optional) ---
-    evals_cap: int | None = None,
-    time_limit_sec: float | None = None,
+    evals_cap: Optional[int] = None,
+    time_limit_sec: Optional[float] = None,
 ) -> Dict[str, Any]:
     """
-    Executes the joint equivalence-class Genetic Algorithm (GA) that combines
-    per-good class selectors with a binary tail. The algorithm evolves compact
-    mixed-type genotypes that are expanded into full phenotypic genomes before
-    evaluation through the `Economy` model.
+    Executes the joint equivalence-class Genetic Algorithm (GA) whose genotype
+    embeds both: (i) per-good class selectors (indices into per-good equivalence-
+    class pools) and (ii) a binary tail. At evaluation time, the phenotype fed
+    to the Economy is obtained by expanding the selected classes into the REAL
+    prefix positions (as discovered from the Planner’s transaction order) and
+    appending the binary tail. The last gene is forcefully set to 1 when
+    'fix_last_gene=True'.
+
+    -----------------------------
+    High-level algorithmic design
+    -----------------------------
+    - Genotype structure: [selectors | binary_tail]
+      * selectors (integer genes): index equivalence classes of per-good allocations
+        obtained from weak compositions over the admissible alphabet discovered by
+        the Planner/transaction builder.
+      * binary_tail (0/1 genes): fine-grained control parameters for production and
+        transactional triggers beyond the prefix layer.
+      * last-gene invariant: when 'fix_last_gene=True', the final locus is enforced
+        to 1 at operator level (mate/mutate) via a defensive decorator. This keeps
+        genotype statistics consistent with phenotype constraints.
+
+    - Phenotype mapping:
+      * For each good g, a selector chooses one equivalence class (counts over the
+        integer alphabet that sum to k_g). The selected counts are expanded into a
+        non-decreasing vector of admissible indices, which is written into the REAL
+        prefix positions previously detected by the Planner.
+      * The binary tail is then appended, with the last bit enforced as 1.
+
+    - Evolutionary scheme (this implementation):
+      * Initialization: mixed-type individuals (selectors + tail) are sampled.
+      * Evaluation: phenotype is built (and cached) and fed to Economy(...).
+      * Selection and replacement:
+          (1) Elitism (moderate): the top 'elite_fraction * parents' individuals
+              are preserved unchanged into the next generation ("elites").
+          (2) Tournament selection (among non-elites): additional parents are chosen
+              by tournament on the remaining population (non-elites), thus balancing
+              exploitation and exploration while avoiding elite over-representation
+              in the mating pool.
+      * Variation:
+          - Crossover: uniform over the entire chromosome (selectors + tail).
+          - Mutation: split regimes (selector mutation vs. tail bit-flip).
+          - Invariant: the last gene is re-enforced to 1 after each operator call
+            via a decorator; phenotype caches are invalidated accordingly.
+
+    - Diagnostics:
+      * Multi-statistics over fitness and tail density.
+      * Phenotype-level metrics: mean pairwise Hamming distance and unique count.
+      * Best-by-selectors ledger: per unique selector configuration, the best
+        utility ever observed during the run is recorded.
 
     Parameters
     ----------
     production_graph : list[tuple[str, str]]
-        Directed acyclic graph describing the production network, where each edge
+        Directed acyclic graph (DAG) describing the production network; each edge
         (u, v) denotes a dependency between goods.
     pmatrix : np.ndarray
         Price matrix of shape (n_goods, n_agents, n_agents), defining transaction
         prices between agents for each good.
     agents_information : dict
-        Agent configuration dictionary required by the `Economy` class, specifying
-        names, tax regimes, production abilities, etc.
+        Agent configuration dict required by Economy, specifying names, tax
+        regimes, production abilities, etc.
     mode : str, optional (default="graph")
         Mode for prefix layout detection via `detect_prefix_layout_and_sizes`. The
-        "graph" mode builds the prefix directly from the production graph topology.
+        "graph" mode builds the prefix directly from production topology.
     generations : int, optional (default=50)
         Number of evolutionary generations.
     popsize : int, optional (default=50)
-        Number of individuals in the population.
+        Population size.
     parents : int, optional (default=20)
-        Number of elite individuals preserved across generations.
+        Number of individuals to be used as parents per generation (upper bound;
+        elitism and available non-elites may reduce the effective mating pool).
+    elite_fraction : float, optional (default=0.25)
+        Fraction of 'parents' preserved as elites each generation (moderate
+        elitism). It is internally capped to keep at least one slot for offspring.
+    tourn_size : int, optional (default=3)
+        Tournament size for selecting parents among non-elites. Larger values
+        increase selection pressure.
     sel_mutation : float, optional (default=0.25)
         Mutation probability applied to selector genes (integer indices).
     tail_mutation : float, optional (default=0.05)
         Mutation probability applied to tail genes (binary segment).
     per_good_cap : int or None, optional
         Optional cap limiting the number of equivalence classes (weak compositions)
-        per good. If `None`, all possible combinations are generated.
+        per good. If None, all combinations are generated.
     max_index_probe : int, optional (default=3)
         Maximum number of index probes used to infer admissible transaction indices
         via the transaction builder.
@@ -447,111 +501,90 @@ def run_joint_original(
     -------
     dict
         Dictionary with results, performance curves, and metadata:
-
         {
-            "best_genome": list[int]
-                Phenotypic genome (expanded from selectors + tail) that achieved
-                the highest utility.
-            "best_utility": float
-                Maximum utility value obtained during the run.
-            "all_best_genomes": list[list[int]]
-                All unique phenotypic genomes achieving the best utility (within tolerance).
-            "curves": dict[str, list[float]]
-                Fitness evolution curves across generations:
-                {
-                    "best": best fitness per generation,
-                    "mean": average fitness per generation,
-                    "median": median fitness per generation
+            "best_genome": list[int],
+            "best_utility": float,
+            "all_best_genomes": list[list[int]],
+            "curves": {"best": [...], "mean": [...], "median": [...]},
+            "meta": {
+                "labels": list[str],
+                "sizes": list[int],
+                "K": int,
+                "L_used": int,
+                "alphabet": list[int],
+                "pool_sizes": list[int],
+                "genome_internal": {"selectors": int, "tail_len": int},
+                "generations": int,
+                "popsize": int,
+                "parents": int,
+                "elite_fraction": float,
+                "tourn_size": int,
+                "sel_mutation": float,
+                "tail_mutation": float,
+                "fix_last_gene": bool,
+                "seed": int or None,
+                "tie_tolerance": float,
+                "num_best_genomes": int,
+                "evals_per_gen": list[int],
+                "evals_cum": list[int],
+                "runtime_sec": float,
+                "budget": {
+                    "evals_cap": int or None,
+                    "time_limit_sec": float or None,
+                    "triggered": bool,
+                    "reason": str or None,
+                    "evals_total": int,
+                    "time_total_sec": float
                 }
-            "meta": dict
-                Metadata and diagnostics of the run:
-                {
-                    "labels": list[str]
-                        Ordered list of goods detected by the Planner.
-                    "sizes": list[int]
-                        Per-good prefix segment sizes.
-                    "K": int
-                        Total prefix length (sum of sizes).
-                    "L_used": int
-                        Full genome length (prefix + tail).
-                    "alphabet": list[int]
-                        Alphabet of admissible transaction indices for prefix construction.
-                    "pool_sizes": list[int]
-                        Number of equivalence classes (count vectors) per good.
-                    "genome_internal": dict
-                        Internal structure with number of selectors and tail length.
-                    "generations": int
-                        Number of generations effectively completed.
-                    "popsize": int
-                        Population size.
-                    "parents": int
-                        Number of elites retained.
-                    "sel_mutation": float
-                        Selector mutation rate.
-                    "tail_mutation": float
-                        Tail mutation rate.
-                    "fix_last_gene": bool
-                        Whether last gene enforcement was active.
-                    "seed": int or None
-                        Random seed used.
-                    "tie_tolerance": float
-                        Tolerance threshold for identifying ties in fitness.
-                    "num_best_genomes": int
-                        Count of genomes achieving best fitness.
-                    "evals_per_gen": list[int]
-                        Number of fitness evaluations per generation.
-                    "evals_cum": list[int]
-                        Cumulative evaluation counts.
-                    "runtime_sec": float
-                        Total runtime in seconds.
-                    "budget": dict
-                        Budget control and termination information:
-                        {
-                            "evals_cap": int or None,
-                            "time_limit_sec": float or None,
-                            "triggered": bool,
-                            "reason": str or None,
-                            "evals_total": int,
-                            "time_total_sec": float
-                        }
-                }
+            },
             "best_by_selectors": list[tuple[str, float]]
-                Sorted list of tuples (selector_combination, best_utility) showing
-                the best performance achieved per selector configuration.
         }
 
     Notes
     -----
-    - Genotype structure: `[selectors | binary_tail]`, where selector genes index
-      equivalence classes of per-good allocations.
-    - Phenotypes are built by expanding selected equivalence classes into real
-      prefix positions, then appending the binary tail.
-    - Maintains phenotype-level metrics: mean Hamming diversity and count of
-      unique phenotypes in the population.
-    - Supports early stopping by evaluation or time budgets.
-    - Intended for fine-tuning experiments and large-scale environment suites
-      using equivalence-class representations.
+    - The last-gene invariant is enforced by a defensive decorator placed on
+      mate/mutate operators, which also invalidates cached phenotypes. This keeps
+      operator-local guarantees and avoids cluttering the evolutionary loop.
+    - The selection scheme (elitism + tournament over non-elites) avoids double
+      representation of elites in the parent pool, mitigating premature convergence
+      while preserving the best-so-far individuals across generations.
     """
 
     import time
+
+    # -----------------------------------------
+    # Budget watchdog (evals/time) for early stop
+    # -----------------------------------------
     t0 = time.time()
-    def _budget_reason(evals_total: int) -> str | None:
+
+    def _budget_reason(evals_total: int) -> Optional[str]:
         if evals_cap is not None and evals_total >= int(evals_cap):
             return "evals"
         if time_limit_sec is not None and (time.time() - t0) >= float(time_limit_sec):
             return "time"
         return None
 
-    random.seed(seed); np.random.seed(seed if seed is not None else None)
+    # ---------------------------
+    # Reproducibility and DEAP IO
+    # ---------------------------
+    random.seed(seed)
+    np.random.seed(seed if seed is not None else None)
     _ensure_deap_types()
 
+    # -------------------------------------------------------------
+    # Detect REAL prefix layout from the production graph (Planner)
+    # -------------------------------------------------------------
     labels, sizes, index_sets, tx_builder, L_min, _ = detect_prefix_layout_and_sizes(
         production_graph, mode=mode
     )
     K = int(sum(sizes))
     L_used = max(int(L_min), K + 1)
-    alphabet = probe_allowed_indices_via_tx_builder(L_used, tx_builder, max_index_probe=max_index_probe)
-    pools, pool_sizes = _build_class_pools(alphabet, sizes, per_good_cap, np.random.default_rng(seed))
+    alphabet = probe_allowed_indices_via_tx_builder(
+        L_used, tx_builder, max_index_probe=max_index_probe
+    )
+    pools, pool_sizes = _build_class_pools(
+        alphabet, sizes, per_good_cap, np.random.default_rng(seed)
+    )
     G = len(pools)
     tail_len = max(0, L_used - K)
 
@@ -560,30 +593,79 @@ def run_joint_original(
         print(f"Goods (Planner order): {labels}")
         print(f"k_g per good: {sizes}  ->  K={K} | L_used={L_used}")
         print(f"Alphabet for prefix: {alphabet}  (|A|={len(alphabet)})")
-        print(f"Per-good pool sizes: {pool_sizes}  (≈ product {int(np.prod(pool_sizes)) if pools else 1})")
+        prod_est = int(np.prod(pool_sizes)) if pools else 1
+        print(f"Per-good pool sizes: {pool_sizes}  (≈ product {prod_est})")
         print(f"Internal chromosome: selectors={G}, tail={tail_len} (total={G + tail_len})")
 
+    # ---------------
+    # DEAP toolbox
+    # ---------------
     toolbox = base.Toolbox()
-    toolbox.register("individual", _init_joint_individual, creator.Individual,
-                     G=G, tail_len=tail_len, pool_sizes=pool_sizes, fix_last_gene=bool(fix_last_gene))
+    toolbox.register(
+        "individual",
+        _init_joint_individual,
+        creator.Individual,
+        G=G,
+        tail_len=tail_len,
+        pool_sizes=pool_sizes,
+        fix_last_gene=bool(fix_last_gene),
+    )
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
     toolbox.register("mate", _mate_uniform)
-    toolbox.register("mutate", _mutate_joint, G=G, pool_sizes=pool_sizes,
-                     sel_mutation=float(sel_mutation), tail_mutation=float(tail_mutation),
-                     fix_last_gene=bool(fix_last_gene))
-    toolbox.register("select", tools.selBest)
-    toolbox.register("evaluate", _make_joint_evaluator(
-        production_graph, pmatrix, agents_information, pools, index_sets, alphabet, L_used, K, fix_last_gene
-    ))
-    _decorate_enforce_last_gene(toolbox, L_used, K, fix_last_gene, pools, index_sets, alphabet)
+    toolbox.register(
+        "mutate",
+        _mutate_joint,
+        G=G,
+        pool_sizes=pool_sizes,
+        sel_mutation=float(sel_mutation),
+        tail_mutation=float(tail_mutation),
+        fix_last_gene=bool(fix_last_gene),
+    )
+    toolbox.register(
+        "evaluate",
+        _make_joint_evaluator(
+            production_graph,
+            pmatrix,
+            agents_information,
+            pools,
+            index_sets,
+            alphabet,
+            L_used,
+            K,
+            fix_last_gene,
+        ),
+    )
 
+    # Defensive decorator: re-enforce last gene and invalidate phenotype cache
+    _decorate_enforce_last_gene(
+        toolbox, L_used, K, fix_last_gene, pools, index_sets, alphabet
+    )
+
+    # Register tournament selector ONCE (with keyword argument)
+    toolbox.register(
+        "select_tournament",
+        tools.selTournament,
+        tournsize=int(max(2, tourn_size)),
+    )
+
+    # --------------------------
+    # Initialize the population
+    # --------------------------
     pop: List[creator.Individual] = toolbox.population(n=int(popsize))
 
+    # --------------------------
+    # Statistics and logbook
+    # --------------------------
     stats_fit = tools.Statistics(key=lambda ind: ind.fitness.values[0])
-    stats_fit.register("min", np.min); stats_fit.register("avg", np.mean)
-    stats_fit.register("med", np.median); stats_fit.register("max", np.max)
+    stats_fit.register("min", np.min)
+    stats_fit.register("avg", np.mean)
+    stats_fit.register("med", np.median)
+    stats_fit.register("max", np.max)
+
     stats_tail = tools.Statistics(key=lambda ind: (sum(ind[G:]) / max(1, len(ind) - G)))
-    stats_tail.register("min", np.min); stats_tail.register("avg", np.mean); stats_tail.register("max", np.max)
+    stats_tail.register("min", np.min)
+    stats_tail.register("avg", np.mean)
+    stats_tail.register("max", np.max)
 
     mstats = tools.MultiStatistics(fitness=stats_fit, tail=stats_tail)
     logbook = tools.Logbook()
@@ -591,19 +673,27 @@ def run_joint_original(
     logbook.chapters["fitness"].header = "min", "avg", "med", "max"
     logbook.chapters["tail"].header = "min", "avg", "max"
 
-    best_curve: List[float] = []; mean_curve: List[float] = []; median_curve: List[float] = []
+    best_curve: List[float] = []
+    mean_curve: List[float] = []
+    median_curve: List[float] = []
     best_by_selectors: Dict[Tuple[int, ...], float] = {}
     evals_per_gen: List[int] = []
-    budget_triggered = False; budget_reason = None
+    budget_triggered = False
 
-    # --- Gen 0 ---
+    # --------------------------
+    # Generation 0: evaluation
+    # --------------------------
     fitnesses = list(map(toolbox.evaluate, pop))
-    for ind, fit in zip(pop, fitnesses): ind.fitness.values = fit
+    for ind, fit in zip(pop, fitnesses):
+        ind.fitness.values = fit
     evals_per_gen.append(len(fitnesses))
 
+    # Record best utility per selector configuration (diagnostics)
     for ind in pop:
-        ksel = tuple(int(x) for x in ind[:G]); val = float(ind.fitness.values[0])
-        if val > best_by_selectors.get(ksel, -float("inf")): best_by_selectors[ksel] = val
+        ksel = tuple(int(x) for x in ind[:G])
+        val = float(ind.fitness.values[0])
+        if val > best_by_selectors.get(ksel, -float("inf")):
+            best_by_selectors[ksel] = val
 
     record = mstats.compile(pop)
     record.update(_extra_population_metrics_phenotype(pop))
@@ -611,64 +701,125 @@ def run_joint_original(
 
     vals0 = [ind.fitness.values[0] for ind in pop]
     b0, m0, med0 = float(np.max(vals0)), float(np.mean(vals0)), float(np.median(vals0))
-    best_curve.append(b0); mean_curve.append(m0); median_curve.append(med0)
+    best_curve.append(b0)
+    mean_curve.append(m0)
+    median_curve.append(med0)
     if verbosity and (log_every > 0):
         print(f"Gen 000: best={b0:.6f} | mean={m0:.6f} | median={med0:.6f}")
 
-    budget_reason = _budget_reason(sum(evals_per_gen))
-    if budget_reason is not None: budget_triggered = True
+    if _budget_reason(sum(evals_per_gen)) is not None:
+        budget_triggered = True
 
-    # --- Loop ---
-    gen = 0
+    # ================================================================
+    # === MAIN EVOLUTIONARY LOOP (Elitism + Tournament Selection) ===
+    # ================================================================
     for gen in range(1, int(generations) + 1):
-        if budget_triggered: break
+        if budget_triggered:
+            break
 
-        elites = list(map(deap_clone, toolbox.select(pop, max(1, min(int(parents), len(pop) - 1)))))
+        # ------------------------------------------------------------
+        # 1) Elitism: preserve top performers with robust capping
+        # ------------------------------------------------------------
+        # Elite count is based on 'parents * elite_fraction' but capped to
+        # ensure at least one slot for offspring and to avoid taking the whole
+        # population as elites (which would stall reproduction).
+        elite_count = max(1, min(int(parents * elite_fraction), len(pop) - 1))
+        elite_refs = tools.selBest(pop, elite_count)     # references (no cloning)
+        elites = list(map(deap_clone, elite_refs))       # cloned survivors
+        non_elites = [ind for ind in pop if ind not in elite_refs]
 
-        need = len(pop) - len(elites)
+        # ------------------------------------------------------------
+        # 2) Tournament selection among non-elites
+        # ------------------------------------------------------------
+        # The number of tournament-selected parents is capped by the size of the
+        # non-elite pool; if none are available, the parents pool falls back to
+        # elites only (edge-case safe).
+        parents_needed = max(0, min(int(parents) - elite_count, len(non_elites)))
+        if parents_needed == 0 or len(non_elites) == 0:
+            parents_pool = elites[:]  # only elites available for mating
+        else:
+            parents_tournament = toolbox.select_tournament(non_elites, parents_needed)
+            parents_pool = elites + parents_tournament
+
+        # ------------------------------------------------------------
+        # 3) Reproduction (crossover + mutation)
+        # ------------------------------------------------------------
+        # Offspring are generated until the population size is restored.
+        # Crossover is uniform across the entire chromosome; mutation is split
+        # by domain (selectors vs binary tail). The last-gene invariant is
+        # automatically re-enforced by the decorator on mate/mutate.
         offspring: List[creator.Individual] = []
+        need = len(pop) - elite_count
+
         while len(offspring) < need:
-            if len(elites) >= 2: p1, p2 = random.sample(elites, 2)
-            else: p1 = elites[0]; p2 = deap_clone(elites[0])
+            if len(parents_pool) >= 2:
+                p1, p2 = random.sample(parents_pool, 2)
+            else:
+                # Degenerate case: a single parent in the pool; self-mate clone
+                p1 = parents_pool[0]
+                p2 = deap_clone(parents_pool[0])
+
             c1, c2 = deap_clone(p1), deap_clone(p2)
-            c1, c2 = toolbox.mate(c1, c2)
-            if hasattr(c1, "fitness"): del c1.fitness.values
-            if hasattr(c2, "fitness"): del c2.fitness.values
-            if hasattr(c1, "_phenotype"): delattr(c1, "_phenotype")
-            if hasattr(c2, "_phenotype"): delattr(c2, "_phenotype")
+            c1, c2 = toolbox.mate(c1, c2)  # invariant: last_gene=1 enforced
+            for c in (c1, c2):
+                if hasattr(c, "fitness"):
+                    del c.fitness.values
+                if hasattr(c, "_phenotype"):
+                    delattr(c, "_phenotype")
             offspring.extend([c1, c2])
+
         offspring = offspring[:need]
 
+        # ------------------------------------------------------------
+        # 4) Mutation and evaluation
+        # ------------------------------------------------------------
         for mut in offspring:
-            toolbox.mutate(mut)
-            if hasattr(mut, "fitness"): del mut.fitness.values
-            if hasattr(mut, "_phenotype"): delattr(mut, "_phenotype")
+            toolbox.mutate(mut)  # invariant: last_gene=1 enforced
+            if hasattr(mut, "fitness"):
+                del mut.fitness.values
+            if hasattr(mut, "_phenotype"):
+                delattr(mut, "_phenotype")
 
         invalid = [ind for ind in offspring if not ind.fitness.valid]
         fits = list(map(toolbox.evaluate, invalid))
-        for ind, fit in zip(invalid, fits): ind.fitness.values = fit
+        for ind, fit in zip(invalid, fits):
+            ind.fitness.values = fit
 
         evals_per_gen.append(len(invalid))
 
+        # ------------------------------------------------------------
+        # 5) Replacement
+        # ------------------------------------------------------------
         pop[:] = elites + offspring
 
+        # Record best utility per selector configuration (diagnostics)
         for ind in pop:
-            ksel = tuple(int(x) for x in ind[:G]); val = float(ind.fitness.values[0])
-            if val > best_by_selectors.get(ksel, -float("inf")): best_by_selectors[ksel] = val
+            ksel = tuple(int(x) for x in ind[:G])
+            val = float(ind.fitness.values[0])
+            if val > best_by_selectors.get(ksel, -float("inf")):
+                best_by_selectors[ksel] = val
 
+        # Stats and logging
         record = mstats.compile(pop)
         record.update(_extra_population_metrics_phenotype(pop))
         logbook.record(gen=gen, evals=len(invalid), **record)
 
         vals = [ind.fitness.values[0] for ind in pop]
         b, m, med = float(np.max(vals)), float(np.mean(vals)), float(np.median(vals))
-        best_curve.append(b); mean_curve.append(m); median_curve.append(med)
+        best_curve.append(b)
+        mean_curve.append(m)
+        median_curve.append(med)
         if verbosity >= 1 and (gen % max(1, log_every) == 0 or gen == int(generations)):
             print(f"Gen {gen:03d}: best={b:.6f} | mean={m:.6f} | median={med:.6f}")
 
-        budget_reason = _budget_reason(sum(evals_per_gen))
-        if budget_reason is not None: budget_triggered = True; break
+        reason = _budget_reason(sum(evals_per_gen))
+        if reason is not None:
+            budget_triggered = True
+            break
 
+    # ------------------------------------------------------------
+    # Final aggregation: best genome(s) and reports
+    # ------------------------------------------------------------
     vals = np.array([ind.fitness.values[0] for ind in pop], dtype=float)
     best_val = float(np.max(vals))
     tie_tolerance = 1e-9
@@ -680,28 +831,35 @@ def run_joint_original(
         ind = pop[idx]
         ph = getattr(ind, "_phenotype", None)
         if ph is None:
-            ph = _phenotype_from_individual(ind, pools, index_sets, alphabet, L_used, K, fix_last_gene)
+            ph = _phenotype_from_individual(
+                ind, pools, index_sets, alphabet, L_used, K, fix_last_gene
+            )
         key = tuple(int(x) for x in ph.tolist())
         if key not in seen:
-            seen.add(key); all_best_genomes.append(list(key))
+            seen.add(key)
+            all_best_genomes.append(list(key))
 
-    best_genome_list: List[int]
     if all_best_genomes:
         best_genome_list = list(all_best_genomes[0])
     else:
+        # Fallback: use the best individual by fitness (should not happen if tie_idx was non-empty)
         best_ind = tools.selBest(pop, 1)[0]
         best_ph = getattr(best_ind, "_phenotype", None)
         if best_ph is None:
-            best_ph = _phenotype_from_individual(best_ind, pools, index_sets, alphabet, L_used, K, fix_last_gene)
+            best_ph = _phenotype_from_individual(
+                best_ind, pools, index_sets, alphabet, L_used, K, fix_last_gene
+            )
         best_genome_list = list(best_ph.tolist())
 
     best_by_selectors_list = sorted(
         [("("+",".join(map(str, k))+")", float(v)) for k, v in best_by_selectors.items()],
-        key=lambda x: x[1], reverse=True
+        key=lambda x: x[1],
+        reverse=True,
     )
 
     evals_cum = np.cumsum(np.array(evals_per_gen, dtype=int)).tolist()
     runtime = time.time() - t0
+
     return {
         "best_genome": best_genome_list,
         "best_utility": best_val,
@@ -710,13 +868,20 @@ def run_joint_original(
         "meta": {
             "labels": labels,
             "sizes": list(map(int, sizes)),
-            "K": K, "L_used": L_used,
-            "alphabet": alphabet, "pool_sizes": pool_sizes,
+            "K": K,
+            "L_used": L_used,
+            "alphabet": alphabet,
+            "pool_sizes": pool_sizes,
             "genome_internal": {"selectors": G, "tail_len": tail_len},
             "generations": int(gen if not budget_triggered else gen),
-            "popsize": int(popsize), "parents": int(parents),
-            "sel_mutation": float(sel_mutation), "tail_mutation": float(tail_mutation),
-            "fix_last_gene": bool(fix_last_gene), "seed": seed,
+            "popsize": int(popsize),
+            "parents": int(parents),
+            "elite_fraction": float(elite_fraction),
+            "tourn_size": int(tourn_size),
+            "sel_mutation": float(sel_mutation),
+            "tail_mutation": float(tail_mutation),
+            "fix_last_gene": bool(fix_last_gene),
+            "seed": seed,
             "tie_tolerance": tie_tolerance,
             "num_best_genomes": len(all_best_genomes) if all_best_genomes else 1,
             "evals_per_gen": evals_per_gen,
@@ -726,10 +891,13 @@ def run_joint_original(
                 "evals_cap": evals_cap,
                 "time_limit_sec": time_limit_sec,
                 "triggered": bool(budget_triggered),
-                "reason": budget_reason,
+                "reason": _budget_reason(sum(evals_per_gen)),
                 "evals_total": int(sum(evals_per_gen)),
                 "time_total_sec": float(runtime),
             },
         },
         "best_by_selectors": best_by_selectors_list,
     }
+
+
+

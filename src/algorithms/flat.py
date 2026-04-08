@@ -28,7 +28,7 @@ import numpy as np
 import random
 
 from deap import base, creator, tools
-from src.algorithms.ga.common import deap_clone
+from src.algorithms.common import deap_clone
 
 
 from src.simulation.economy.economy import Economy
