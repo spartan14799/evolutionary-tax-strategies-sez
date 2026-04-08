@@ -41,7 +41,7 @@ import time
 from typing import Any, Dict, List, Tuple, Optional
 
 import numpy as np
-from src.algorithms.macro_micro import run_ga_macro_micro
+from src.search_heuristics.macro_micro import run_ga_macro_micro
 
 # Fixed algorithm name for downstream consumers
 ALGO_NAME = "micro"

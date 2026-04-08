@@ -35,12 +35,12 @@ import numpy as np
 from deap import base, creator, tools
 
 from src.simulation.economy.economy import Economy
-from src.algorithms.common import (
+from src.search_heuristics.common import (
     detect_prefix_layout_and_sizes,
     probe_allowed_indices_via_tx_builder,
     format_genome,  # optional helper for logs
 )
-from src.algorithms.common import deap_clone
+from src.search_heuristics.common import deap_clone
 
 
 # =============================================================================

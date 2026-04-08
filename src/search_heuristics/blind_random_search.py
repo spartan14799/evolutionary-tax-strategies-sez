@@ -39,7 +39,7 @@ import numpy as np
 from deap import base, creator, tools
 
 # Reuse helpers from the flat GA to keep identical evaluation and metrics.
-from src.algorithms.flat import (
+from src.search_heuristics.flat import (
     _ensure_deap_types,
     _init_binary_individual,
     _make_deap_evaluator,

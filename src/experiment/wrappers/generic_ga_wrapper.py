@@ -2,8 +2,8 @@ import time
 import numpy as np
 from typing import Dict, List, Tuple, Any
 
-from src.algorithms.generic_ga import run_generic_ga
-from src.algorithms.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.search_heuristics.generic_ga import run_generic_ga
+from src.search_heuristics.common import make_transactions_builder, calibrate_min_len_via_builder
 
 
 def run_generic_ga_w1(

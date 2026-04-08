@@ -47,10 +47,10 @@ from src.simulation.economy.production_process.production_process import Product
 from src.simulation.planner.planner import Planner
 
 # Real GA modules (no shims)
-from src.algorithms.flat import run_ga_flat
-from src.algorithms.equivclass_exhaustive import run_ga_equivclass_exhaustive
-from src.algorithms.equivclass_joint import run_ga_equivclass_joint
-from src.algorithms import common as ga_common  # for probes
+from src.search_heuristics.flat import run_ga_flat
+from src.search_heuristics.equivclass_exhaustive import run_ga_equivclass_exhaustive
+from src.search_heuristics.equivclass_joint import run_ga_equivclass_joint
+from src.search_heuristics import common as ga_common  # for probes
 
 # ---------------------------------------------------------------------------
 # Problem instance (edit freely)

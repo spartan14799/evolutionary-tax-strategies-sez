@@ -18,11 +18,11 @@ from deap import base, creator, tools
 
 from scipy.stats import norm
 
-from src.algorithms.common import (
+from src.search_heuristics.common import (
     detect_prefix_layout_and_sizes,         # Planner-grounded prefix layout
     probe_allowed_indices_via_tx_builder,   # admissible integer alphabet
 )
-from src.algorithms.common import deap_clone
+from src.search_heuristics.common import deap_clone
 from src.simulation.economy.economy import Economy
 
 

@@ -3,8 +3,8 @@ import numpy as np
 import networkx as nx
 from typing import Dict, List, Tuple, Any
 
-from src.algorithms.flat import run_ga_flat
-from src.algorithms.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.search_heuristics.flat import run_ga_flat
+from src.search_heuristics.common import make_transactions_builder, calibrate_min_len_via_builder
 
 
 # =============================================================================

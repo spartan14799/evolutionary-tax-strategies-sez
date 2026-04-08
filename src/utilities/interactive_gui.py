@@ -66,10 +66,10 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from src.simulation.economy.economy import Economy  # noqa: E402
-from src.algorithms import (  # noqa: E402
+from src.search_heuristics import (  # noqa: E402
     run_ga_flat, run_ga_equivclass_joint, run_ga_equivclass_exhaustive
     )
-from src.algorithms.common import detect_prefix_layout_and_sizes  # noqa: E402
+from src.search_heuristics.common import detect_prefix_layout_and_sizes  # noqa: E402
 
 
 # -----------------------------------------------------------------------------

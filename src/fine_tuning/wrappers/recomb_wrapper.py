@@ -41,7 +41,7 @@ import time
 from typing import Any, Dict, List, Tuple
 
 import numpy as np
-from src.algorithms.recomb_only import run_ga_recomb_only
+from src.search_heuristics.recomb_only import run_ga_recomb_only
 
 
 # =============================================================================
