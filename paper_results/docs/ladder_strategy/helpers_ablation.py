@@ -16,11 +16,11 @@ import matplotlib.pyplot as plt
 # ----------------------------
 # Resolve repository root
 # ----------------------------
-_THIS = Path.cwd()
+_THIS = Path(__file__).parent
 REPO_ROOT = _THIS
 cur = _THIS
 while cur != cur.parent:
-    if (cur / "classes").exists() or (cur / "algorithms").exists() or (cur / "pyproject.toml").exists():
+    if (cur / "src").exists() and (cur / "configs").exists():
         REPO_ROOT = cur
         break
     cur = cur.parent
@@ -116,7 +116,7 @@ def build_environment(method: str = "macro_micro", case: str = "Base") -> Tuple[
     goods = sorted({n for u, v in G_links for n in (u, v)})
 
     # Agents
-    ACCOUNTS_PATH = REPO_ROOT / "chart_of_accounts.yaml"
+    ACCOUNTS_PATH = REPO_ROOT / "configs" / "chart_of_accounts" / "chart_of_accounts.yaml"
     BASE_AGENTS = {
         "MKT": {"type": "MKT", "inventory_strategy": "FIFO", "firm_related_goods": [],
                 "income_statement_type": "standard", "accounts_yaml_path": ACCOUNTS_PATH, "price_mapping": 0},
