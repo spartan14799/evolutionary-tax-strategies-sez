@@ -1,2 +1,4 @@
-from .....simulation.economy.production_process import production_graph, constrained_production_graph , production_process
+
+from ....simulation.economy.production_process import production_graph, constrained_production_graph , production_process
+
 all = [production_graph, constrained_production_graph, production_process]

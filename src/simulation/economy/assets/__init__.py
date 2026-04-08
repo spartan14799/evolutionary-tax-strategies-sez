@@ -1,4 +1,4 @@
-from .....simulation.economy.assets import good
+from ....simulation.economy.assets import good
 
 __all__ = [good]
 
