@@ -1,0 +1,6 @@
+#Editor
+.vscode/
+
+#local tests
+.hypothesis/
+pytest.ini/
