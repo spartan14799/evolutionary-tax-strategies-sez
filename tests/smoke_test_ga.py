@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Set, Tuple
 
-from Experiment_Pipeline.fine_tuning.wrappers.pso_wrapper import run_pso_w1
+from src.fine_tuning.wrappers.pso_wrapper import run_pso_w1
 import numpy as np
 
 # ---------------------------------------------------------------------------
