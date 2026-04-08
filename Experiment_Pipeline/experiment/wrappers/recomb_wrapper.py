@@ -1,5 +1,5 @@
-from algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
-from algorithms.ga.recomb_only import run_ga_recomb_only  # adjust import path if needed
+from src.algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.algorithms.ga.recomb_only import run_ga_recomb_only  # adjust import path if needed
 from typing import List, Tuple, Dict, Any
 import numpy as np
 

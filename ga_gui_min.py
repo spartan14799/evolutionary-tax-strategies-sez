@@ -65,11 +65,11 @@ while not (ROOT / "classes" / "economy" / "economy.py").exists() and ROOT != ROO
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from classes.economy.economy import Economy  # noqa: E402
-from algorithms.ga import (  # noqa: E402
+from src.simulation.economy.economy import Economy  # noqa: E402
+from src.algorithms.ga import (  # noqa: E402
     run_ga_flat, run_ga_equivclass_joint, run_ga_equivclass_exhaustive
     )
-from algorithms.ga.common import detect_prefix_layout_and_sizes  # noqa: E402
+from src.algorithms.ga.common import detect_prefix_layout_and_sizes  # noqa: E402
 
 
 # -----------------------------------------------------------------------------

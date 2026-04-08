@@ -7,14 +7,14 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-import classes.economy.agent.reporting.income_statement as mod
+import src.simulation.economy.agent.reporting.income_statement as mod
 
 from tests.test_income_statement import (
     make_accounts_for_international_case,
     post_balances_for_basic_ibf_scenario,
     AgentStub,
 )
-from classes.economy.agent.reporting.income_statement import (
+from src.simulation.economy.agent.reporting.income_statement import (
     generate_income_statement, ZFMixedPolicy, ZFFlatPolicy, StandardPolicy
 )
 

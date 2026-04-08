@@ -1,5 +1,5 @@
 
-from algorithms.ga.blind_random_search import run_random_search
+from src.algorithms.ga.blind_random_search import run_random_search
 
 from typing import Any, List, Tuple, Dict 
 
@@ -7,7 +7,7 @@ import numpy as np
 
 import random 
 
-from algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
 
 def run_blindrandom_w1(
     graph_links: List[Tuple[str, str]],

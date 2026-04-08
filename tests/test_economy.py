@@ -3,10 +3,10 @@ sys.path.append(r"C:\Users\andre\Repositories\FTZ_model_2.0")
 
 from pathlib import Path
 
-from classes.economy.economy import Economy
+from src.simulation.economy.economy import Economy
 
 import numpy as np 
-from classes.economy.agent.reporting.income_statement import generate_income_statement
+from src.simulation.economy.agent.reporting.income_statement import generate_income_statement
 import networkx as nx
 
 graph_info =  [("Input", "Intermediate"),

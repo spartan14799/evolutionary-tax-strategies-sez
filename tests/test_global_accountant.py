@@ -14,9 +14,9 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-from classes.economy.agent.accountant.chart_of_accounts import ChartOfAccounts  # noqa: E402
-from classes.economy.invisible_hand.global_accountant import Accountant         # noqa: E402
-from classes.economy.agent.accountant.accounting_entry import AccountingEntry   # noqa: E402
+from src.simulation.economy.agent.accountant.chart_of_accounts import ChartOfAccounts  # noqa: E402
+from src.simulation.economy.invisible_hand.global_accountant import Accountant         # noqa: E402
+from src.simulation.economy.agent.accountant.accounting_entry import AccountingEntry   # noqa: E402
 
 # Debe coincidir con la ruta real del módulo para monkeypatch.setattr
 MODULE = "classes.economy.invisible_hand.global_accountant"

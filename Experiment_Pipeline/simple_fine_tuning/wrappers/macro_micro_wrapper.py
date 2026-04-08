@@ -41,7 +41,7 @@ import time
 from typing import Any, Dict, List, Tuple, Optional
 
 import numpy as np
-from algorithms.ga.macro_micro import run_ga_macro_micro
+from src.algorithms.ga.macro_micro import run_ga_macro_micro
 
 # Algorithm identifier for downstream consumers
 ALGO_NAME = "macro_micro"

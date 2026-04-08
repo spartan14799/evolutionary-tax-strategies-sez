@@ -12,7 +12,7 @@ Style: pytest
 """
 
 from __future__ import annotations
-from classes.economy.agent.accountant.account import Account
+from src.simulation.economy.agent.accountant.account import Account
 from decimal import Decimal
 from pathlib import Path
 import sys
@@ -28,13 +28,13 @@ if str(REPO) not in sys.path:
 # ---------------------------------------------------------------------------
 # Imports del sistema real
 # ---------------------------------------------------------------------------
-from classes.economy.agent.accountant.chart_of_accounts import ChartOfAccounts  # noqa: E402
+from src.simulation.economy.agent.accountant.chart_of_accounts import ChartOfAccounts  # noqa: E402
 
 # Import flexible del income_statement:
 # 1) Ubicación actual (agent.reporting)
 # 2) Compatibilidad con la ruta antigua (accountant.reporting)
 try:
-    from classes.economy.agent.reporting.income_statement import (  # noqa: E402
+    from src.simulation.economy.agent.reporting.income_statement import (  # noqa: E402
         generate_income_statement,
         TaxBreakdown,
         StandardPolicy,
@@ -42,7 +42,7 @@ try:
         ZFMixedPolicy,
     )
 except ModuleNotFoundError:
-    from classes.economy.agent.reporting.income_statement import (  # noqa: E402
+    from src.simulation.economy.agent.reporting.income_statement import (  # noqa: E402
         generate_income_statement,
         TaxBreakdown,
         StandardPolicy,

@@ -2,7 +2,7 @@ import pytest
 from decimal import Decimal
 
 # importa Accountant desde tu ruta real
-from classes.economy.invisible_hand.global_accountant import Accountant
+from src.simulation.economy.invisible_hand.global_accountant import Accountant
 
 
 class U:

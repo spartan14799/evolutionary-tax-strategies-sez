@@ -30,7 +30,7 @@ import time
 from typing import Any, Dict, List, Tuple, Optional
 
 import numpy as np
-from algorithms.ga.eq_class_generic import run_eq_class_generic_ga
+from src.algorithms.ga.eq_class_generic import run_eq_class_generic_ga
 
 ALGO_NAME = "mixed_generic"
 

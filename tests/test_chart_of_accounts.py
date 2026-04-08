@@ -15,7 +15,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-from classes.economy.agent.accountant.chart_of_accounts import (  # noqa: E402
+from src.simulation.economy.agent.accountant.chart_of_accounts import (  # noqa: E402
     ChartOfAccounts,
     ensure_asset_accounts_for_graph,
 )
@@ -273,7 +273,7 @@ def test_load_accounts_from_yaml(tmp_path):
     p.write_text(yaml_text, encoding="utf-8")
 
     # Importamos aquí para no forzar dependencia de yaml si no se usa en otros tests
-    from classes.economy.agent.accountant.chart_of_accounts import (  # noqa: E402
+    from src.simulation.economy.agent.accountant.chart_of_accounts import (  # noqa: E402
         ChartOfAccounts as _COA,
     )
     data = _COA.load_accounts_from_yaml(str(p))

@@ -14,8 +14,8 @@ Returns two dictionaries:
 # =====================================================================
 # Imports
 # =====================================================================
-from classes.economy.order_book.utils.price_markup_generator import PriceMarkupGenerator
-from classes.economy.production_process.search_space import SearchSpace
+from src.simulation.economy.order_book.utils.price_markup_generator import PriceMarkupGenerator
+from src.simulation.economy.production_process.search_space import SearchSpace
 
 import json
 import math

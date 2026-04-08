@@ -10,9 +10,9 @@ import networkx as nx
 import importlib
 from collections import deque
 import matplotlib.pyplot as plt
-from classes.economy.production_process.production_graph import ProductionGraph
-from classes.economy.production_process.production_process import ProductionProcess
-from classes.planner.planner import Planner
+from src.simulation.economy.production_process.production_graph import ProductionGraph
+from src.simulation.economy.production_process.production_process import ProductionProcess
+from src.simulation.planner.planner import Planner
 
 from networkx.drawing.nx_pydot import graphviz_layout
 

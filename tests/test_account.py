@@ -8,7 +8,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-from classes.economy.agent.accountant.account import Account  # noqa: E402
+from src.simulation.economy.agent.accountant.account import Account  # noqa: E402
 
 
 # Helper to express money amounts as Decimal with two decimals

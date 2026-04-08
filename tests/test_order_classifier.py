@@ -19,7 +19,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-from classes.economy.order_book.utils.order_classifier import (  # noqa: E402
+from simulation.economy.order_book.utils.order_classifier import (  # noqa: E402
     OrderClassifier,
 )
 

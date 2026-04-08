@@ -29,8 +29,8 @@ from typing import Any, Dict, List, Tuple
 
 import numpy as np
 
-from algorithms.ga.particle_swarm import run_pso
-from algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.algorithms.ga.particle_swarm import run_pso
+from src.algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
 
 
 # ======================================================================================

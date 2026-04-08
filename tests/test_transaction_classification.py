@@ -1,5 +1,5 @@
 import pytest
-from classes.economy.agent.accountant.transaction_classification import (
+from simulation.economy.agent.accountant.transaction_classification import (
     AssetCategory,
     classify_asset_category
 )

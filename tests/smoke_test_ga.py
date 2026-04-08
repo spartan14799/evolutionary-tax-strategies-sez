@@ -41,16 +41,16 @@ if str(REPO_ROOT) not in sys.path:
 # ---------------------------------------------------------------------------
 # Domain imports
 # ---------------------------------------------------------------------------
-from classes.economy.economy import Economy
-from classes.economy.production_process.production_graph import ProductionGraph
-from classes.economy.production_process.production_process import ProductionProcess
-from classes.planner.planner import Planner
+from src.simulation.economy.economy import Economy
+from src.simulation.economy.production_process.production_graph import ProductionGraph
+from src.simulation.economy.production_process.production_process import ProductionProcess
+from src.simulation.planner.planner import Planner
 
 # Real GA modules (no shims)
-from algorithms.ga.flat import run_ga_flat
-from algorithms.ga.equivclass_exhaustive import run_ga_equivclass_exhaustive
-from algorithms.ga.equivclass_joint import run_ga_equivclass_joint
-from algorithms.ga import common as ga_common  # for probes
+from src.algorithms.ga.flat import run_ga_flat
+from src.algorithms.ga.equivclass_exhaustive import run_ga_equivclass_exhaustive
+from src.algorithms.ga.equivclass_joint import run_ga_equivclass_joint
+from src.algorithms.ga import common as ga_common  # for probes
 
 # ---------------------------------------------------------------------------
 # Problem instance (edit freely)

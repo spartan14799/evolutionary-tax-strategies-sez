@@ -1,5 +1,5 @@
 
-from algorithms.ga.macro_micro import run_ga_macro_micro  
+from src.algorithms.ga.macro_micro import run_ga_macro_micro  
 from typing import List, Tuple, Dict, Any
 import numpy as np
 

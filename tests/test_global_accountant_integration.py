@@ -24,10 +24,10 @@ assert YAML_PATH is not None, (
 )
 
 # Imports del sistema real (después de ajustar sys.path)
-from classes.economy.agent.accountant.chart_of_accounts import ChartOfAccounts  # noqa: E402
-from classes.economy.agent.accountant.ledger import Ledger                      # noqa: E402
-from classes.economy.agent.accountant.agent_accountant import AgentAccountant   # noqa: E402
-from classes.economy.invisible_hand.global_accountant import Accountant         # noqa: E402
+from src.simulation.economy.agent.accountant.chart_of_accounts import ChartOfAccounts  # noqa: E402
+from src.simulation.economy.agent.accountant.ledger import Ledger                      # noqa: E402
+from src.simulation.economy.agent.accountant.agent_accountant import AgentAccountant   # noqa: E402
+from src.simulation.economy.invisible_hand.global_accountant import Accountant         # noqa: E402
 
 
 def D(x) -> Decimal:

@@ -26,7 +26,7 @@ import time
 from typing import Any, Dict, List, Tuple
 
 import numpy as np
-from algorithms.ga.equivclass_joint import run_ga_equivclass_joint
+from src.algorithms.ga.equivclass_joint import run_ga_equivclass_joint
 
 
 # ======================================================================================

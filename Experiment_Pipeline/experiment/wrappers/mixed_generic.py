@@ -1,8 +1,8 @@
 from typing import List, Tuple, Dict, Any
 import numpy as np
 
-from algorithms.ga.eq_class_generic import run_eq_class_generic_ga
-from algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.algorithms.ga.eq_class_generic import run_eq_class_generic_ga
+from src.algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
 
 
 def run_mixed_generic_w1(

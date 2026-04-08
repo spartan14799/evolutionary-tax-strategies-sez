@@ -25,8 +25,8 @@ from typing import Any, Dict, List, Tuple
 
 import numpy as np
 
-from algorithms.ga.generic_ga import run_generic_ga
-from algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
+from src.algorithms.ga.generic_ga import run_generic_ga
+from src.algorithms.ga.common import make_transactions_builder, calibrate_min_len_via_builder
 
 
 # ======================================================================================

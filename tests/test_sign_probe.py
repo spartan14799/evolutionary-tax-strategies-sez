@@ -12,7 +12,7 @@ from tests.test_income_statement import (
     post_balances_for_basic_ibf_scenario,
     AgentStub,
 )
-from classes.economy.agent.reporting.income_statement import generate_income_statement
+from src.simulation.economy.agent.reporting.income_statement import generate_income_statement
 
 def D(x) -> Decimal:
     return Decimal(str(x)).quantize(Decimal("0.01"))

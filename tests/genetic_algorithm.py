@@ -15,7 +15,7 @@ if str(ROOT_DIR) not in sys.path:
 # =============================================================================
 # IMPORTANTE: Asegúrate de que tu clase Economy sea importable aquí.
 # =============================================================================
-from classes.economy.economy import Economy
+from src.simulation.economy.economy import Economy
 
 # =============================================================================
 # 1. Función de Aptitud (Fitness)
