@@ -37,11 +37,24 @@ Standard tax analysis is static and rule-based. PTZM instead treats tax systems 
 
 ## Architecture
 
-├── algorithms/       # Optimization methods (GA, PSO, Random Search)
-├── clases/           # Core simulation logic (firms, economy, planner)
-├── data_analysis/    # Experimental results and figures
-├── docs/             # Documentation and test suite
-└── config/           # Environment and experiment configurations
+├── configs/
+│   ├── chart_of_accounts/
+│   ├── experiment_configs/
+│   └── fine_tuning_configs/
+├── paper_results/
+│   ├── docs/
+│   ├── experiment/
+│   └── fine_tuning/
+├── pytest.ini
+├── requirements.txt
+├── src/
+│   ├── __init__.py
+│   ├── algorithms/
+│   ├── experiment/
+│   ├── fine_tuning/
+│   ├── simulation/
+    └── utilities/
+
 
 ---
 
