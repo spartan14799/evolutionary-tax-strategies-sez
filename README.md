@@ -37,6 +37,7 @@ Standard tax analysis is static and rule-based. PTZM instead treats tax systems 
 
 ## Architecture
 
+```bash
 ├── configs/
 │   ├── chart_of_accounts/
 │   ├── experiment_configs/
@@ -52,7 +53,8 @@ Standard tax analysis is static and rule-based. PTZM instead treats tax systems 
 │   ├── experiment/
 │   ├── fine_tuning/
 │   ├── simulation/
-    └── utilities/
+│   └── utilities/
+```
 
 
 ---
