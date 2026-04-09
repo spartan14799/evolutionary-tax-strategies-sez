@@ -36,34 +36,34 @@ sys.stdout.reconfigure(encoding='utf-8')
 sys.stderr.reconfigure(encoding='utf-8')
 
 # --------------------------------------------------------------------------------------
-# Ensure repository source root is importable (so `fine_tuning` resolves)
+# Ensure repository root is importable (so `src` resolves)
 # --------------------------------------------------------------------------------------
 _THIS = Path(__file__).resolve()
 # Layout assumption: .../FTZ_model_2.0/src/fine_tuning/scripts/run_all.py
-_REPO_ROOT = _THIS.parents[3]  # → .../FTZ_model_2.0/src
+_REPO_ROOT = _THIS.parents[3]  # → .../FTZ_model_2.0
 if str(_REPO_ROOT) not in sys.path:
     sys.path.append(str(_REPO_ROOT))
 
 # --------------------------------------------------------------------------------------
 # Local utilities and loaders (relative to this project layout)
 # --------------------------------------------------------------------------------------
-from fine_tuning.scripts.ft2_env_loader import build_environment_dict
-from fine_tuning.scripts.utils_metrics import (
+from src.fine_tuning.scripts.ft2_env_loader import build_environment_dict
+from src.fine_tuning.scripts.utils_metrics import (
     auc_best_and_norm,
     curves_summary,
     per_generation_summary,
 )
 
 # Normalized wrappers for this pipeline
-from fine_tuning.wrappers.generic_wrapper import run_generic_w2
-from fine_tuning.wrappers.joint_wrapper import run_joint_w2
-from fine_tuning.wrappers.pso_wrapper import run_pso_w2
-from fine_tuning.wrappers.recomb_wrapper import run_recomb_w2
-from fine_tuning.wrappers.baseline_wrapper import run_baseline_w2
-from fine_tuning.wrappers.micro_wrapper import run_micro_w2
-from fine_tuning.wrappers.macro_wrapper import run_macro_w2
-from fine_tuning.wrappers.macro_micro_wrapper import run_macro_micro_w2
-from fine_tuning.wrappers.mixed_generic_wrapper import run_mixed_generic_w2
+from src.fine_tuning.wrappers.generic_wrapper import run_generic_w2
+from src.fine_tuning.wrappers.joint_wrapper import run_joint_w2
+from src.fine_tuning.wrappers.pso_wrapper import run_pso_w2
+from src.fine_tuning.wrappers.recomb_wrapper import run_recomb_w2
+from src.fine_tuning.wrappers.baseline_wrapper import run_baseline_w2
+from src.fine_tuning.wrappers.micro_wrapper import run_micro_w2
+from src.fine_tuning.wrappers.macro_wrapper import run_macro_w2
+from src.fine_tuning.wrappers.macro_micro_wrapper import run_macro_micro_w2
+from src.fine_tuning.wrappers.mixed_generic_wrapper import run_mixed_generic_w2
 
 
 # ======================================================================================
