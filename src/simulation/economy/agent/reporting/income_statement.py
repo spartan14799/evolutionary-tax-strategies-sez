@@ -155,8 +155,8 @@ DEFAULT_ZF_POLICY_NAME = "flat"     # "flat" | "mixed"
 INTL_COGS_CODES: set[str] = {"6130"}                  # Internacional (COGS)
 NAT_COGS_CODES:  set[str] = {"6120", "6135"}          # Nacional (COGS)
 
-INTL_REV_CODES:  set[str] = {"4130", "4185"}          # Internacional (Ingresos)
-NAT_REV_CODES:   set[str] = {"4120", "4135"}          # Nacional (Ingresos)
+INTL_REV_CODES:  set[str] = {"4130", "4185"}          # Internacional (Revenues)
+NAT_REV_CODES:   set[str] = {"4120", "4135"}          # Nacional (Revenues)
 
 
 @dataclass(frozen=True)

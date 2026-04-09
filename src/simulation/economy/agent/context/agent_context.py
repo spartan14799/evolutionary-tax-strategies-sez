@@ -7,8 +7,6 @@ from typing import List, Optional
 from src.simulation.economy.production_process.production_graph import ProductionGraph
 from src.simulation.economy.production_process.constrained_production_graph import ConstrainedProductionGraph
 
-#! TODO añadir método que identifica insumos y productos 
-#! TODO: Añadir un método o atributo dentro del context quie me diga la ubicación del agente 
 
 ### Author: ANDRES LEGUIZAMON / CARLOS SANCHEZ / GERMAN RODRIGUEZ / SOFIA OCAMPO 
 ### 2025
