@@ -8,8 +8,8 @@
 
 This repository accompanies the paper:
 
-> **Evolutionary Computation for Tax-Minimizing Strategies in Special Economic Zones**
-> *[Conference / Journal — TBD]*
+> **Evolutionary Computation for Tax-Minimizing Strategies in Special Economic Zones**  
+> *Proceedings of the Genetic and Evolutionary Computation Conference (GECCO 2026)*
 
 We introduce the **Production Tax Zone Model (PTZM)**, an anticipatory computational framework that studies the emergence of tax-minimizing strategies in complex regulatory environments. The model combines agent-based modeling of heterogeneous firms, discrete simulation of production and trade, and heuristic optimization — enabling a computational laboratory for tax policy evaluation rather than a single predefined scenario.
 
