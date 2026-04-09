@@ -1,8 +1,8 @@
 {
   "seeds": [101,202,303,404,505,606,707,808,909,1001,1102],
 
-  "env_json": "../data/prices/FT2_Prices_V1_env.json",
-  "accounts_yaml": "../../chart_of_accounts.yaml",
+  "env_json": "../fine_tuning_env_config/prices/FT2_Prices_V1_env.json",
+  "accounts_yaml": "../../chart_of_accounts/chart_of_accounts.yaml",
 
   "algorithms": ["generic", "mixed_generic", "pso", "joint", "baseline", "macro", "micro", "macro_micro", "recombination"],
 
