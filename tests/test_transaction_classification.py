@@ -1,5 +1,14 @@
+import os
+import sys
 import pytest
-from simulation.economy.agent.accountant.transaction_classification import (
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+SRC_ROOT = os.path.join(ROOT, "src")
+for path in (SRC_ROOT, ROOT):
+    if path not in sys.path:
+        sys.path.insert(0, path)
+
+from simulation.economy.invisible_hand.transaction_classification import (
     AssetCategory,
     classify_asset_category
 )

@@ -15,16 +15,18 @@ import pytest
 # -------------------------------------------------------------
 # Ubicar raíz del proyecto para importar los módulos del paquete
 # -------------------------------------------------------------
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-if ROOT not in sys.path:
-    sys.path.insert(0, ROOT)
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+SRC_ROOT = os.path.join(ROOT, "src")
+for path in (SRC_ROOT, ROOT):
+    if path not in sys.path:
+        sys.path.insert(0, path)
 
-from simulation.economy.order_book.utils.order_classifier import (  # noqa: E402
+from simulation.economy.invisible_hand.order_classifier import (  # noqa: E402
     OrderClassifier,
 )
 
 # Ruta del símbolo importado dentro del módulo a monkeypatchear
-ORDER_CLASSIFIER_MODULE = "classes.economy.order_book.utils.order_classifier"
+ORDER_CLASSIFIER_MODULE = "simulation.economy.invisible_hand.order_classifier"
 
 
 # ------------------------------ Helpers --------------------------------------
