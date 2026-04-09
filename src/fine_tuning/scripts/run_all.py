@@ -53,6 +53,7 @@ from src.fine_tuning.scripts.utils_metrics import (
     curves_summary,
     per_generation_summary,
 )
+from src.config_paths import resolve_chart_of_accounts_path
 
 # Normalized wrappers for this pipeline
 from src.fine_tuning.wrappers.generic_wrapper import run_generic_w2
@@ -77,7 +78,7 @@ def _load_json(path: Path) -> Any:
 def _resolve_plan_paths(plan_path: Path, plan: Dict[str, Any]) -> Tuple[Path, Path]:
     base = plan_path.parent
     env_json = (base / plan["env_json"]).resolve()
-    accounts_yaml = (base / plan["accounts_yaml"]).resolve()
+    accounts_yaml = resolve_chart_of_accounts_path(plan["accounts_yaml"], base_dir=base)
     return env_json, accounts_yaml
 
 

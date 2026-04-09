@@ -7,6 +7,8 @@ from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from typing import Dict, Any
 
+from src.config_paths import resolve_chart_of_accounts_path
+
 # --- Import all wrappers ---
 from src.experiment.wrappers.flat_wrapper import run_flat_w1
 from src.experiment.wrappers.generic_ga_wrapper import run_generic_ga_w1
@@ -96,9 +98,11 @@ def run_test_env(
     np.random.seed(seed)
     seeds = np.random.randint(0, 10**6, size=runs)
 
+    resolved_chart_path = str(resolve_chart_of_accounts_path(chart_of_accounts_path))
+
     # Inject chart of accounts path into agents
     for ainfo in env_dict["agents_info"].values():
-        ainfo["accounts_yaml_path"] = chart_of_accounts_path
+        ainfo["accounts_yaml_path"] = resolved_chart_path
 
     # Determine popsize
     budget = env_dict.get("budget", 10000)

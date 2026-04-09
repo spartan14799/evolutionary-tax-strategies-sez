@@ -36,6 +36,8 @@ from typing import Any, Dict, List, Tuple
 
 import numpy as np
 
+from src.config_paths import resolve_chart_of_accounts_path
+
 
 @dataclass(frozen=True)
 class EnvDict:
@@ -164,6 +166,7 @@ def build_environment_dict(env_json_path: Path, accounts_yaml_path: Path) -> Env
     Returns:
         EnvDict: A structured container with production_graph, price_matrix, and agents_info.
     """
+    accounts_yaml_path = resolve_chart_of_accounts_path(accounts_yaml_path, base_dir=env_json_path.parent)
     edges, tensor = _load_env_json(env_json_path)
     goods = _extract_nodes_from_edges(edges)
     n_agents = int(tensor.shape[1])

@@ -4,6 +4,7 @@ sys.path.append(r"C:\Users\andre\Repositories\FTZ_model_2.0")
 from pathlib import Path
 
 from src.simulation.economy.economy import Economy
+from src.config_paths import get_default_chart_of_accounts_path
 
 import numpy as np 
 from src.simulation.economy.agent.reporting.income_statement import generate_income_statement
@@ -37,7 +38,7 @@ goods_list
 
 
 ROOT_DIR = Path(r"C:\Users\andre\Repositories\FTZ_model_2.0")
-accounts_path = ROOT_DIR / "chart_of_accounts.yaml"
+accounts_path = get_default_chart_of_accounts_path()
 
 
 agents_info = { "MKT":

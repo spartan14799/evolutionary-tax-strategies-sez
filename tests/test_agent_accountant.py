@@ -27,6 +27,9 @@ def D(x) -> Decimal:
     return Decimal(str(x)).quantize(Decimal("0.01"))
 
 
+SEEDED_BALANCE = D("100000000.00")
+
+
 # ------------------------------- Fixtures ------------------------------------
 
 @pytest.fixture
@@ -58,7 +61,7 @@ def test_record_valid_entry_updates_balances_and_ledger(setup_ok):
     ret = accountant.record_entry(entry)
     assert ret is None  # no retorna nada
 
-    assert chart.get_account("1105").balance == D("1200.00")  # 1000 + 200
+    assert chart.get_account("1105").balance == SEEDED_BALANCE + D("200.00")
     assert chart.get_account("4120").balance == D("200.00")
     assert len(ledger.get_all_entries()) == 1
 
@@ -78,7 +81,7 @@ def test_multiple_entries_accumulate_and_register(setup_ok):
     accountant.record_entry(e1)
     accountant.record_entry(e2)
 
-    assert chart.get_account("1105").balance == D("1200.00")  # 1000 + 150 + 50
+    assert chart.get_account("1105").balance == SEEDED_BALANCE + D("200.00")
     assert chart.get_account("4120").balance == D("200.00")
     assert len(ledger.get_all_entries()) == 2
 
@@ -93,7 +96,7 @@ def test_cost_debit_increases_cost_and_credit_reduces_asset(setup_ok):
     accountant.record_entry(entry)
 
     assert chart.get_account("5110").balance == D("80.00")    # Cost: débito aumenta
-    assert chart.get_account("1105").balance == D("920.00")   # Asset: crédito disminuye
+    assert chart.get_account("1105").balance == SEEDED_BALANCE - D("80.00")
 
 
 def test_revenue_debit_decreases_revenue(setup_ok):
@@ -106,7 +109,7 @@ def test_revenue_debit_decreases_revenue(setup_ok):
     accountant.record_entry(entry)
 
     assert chart.get_account("4120").balance == D("-10.00")
-    assert chart.get_account("1105").balance == D("990.00")
+    assert chart.get_account("1105").balance == SEEDED_BALANCE - D("10.00")
 
 
 def test_balanced_entry_with_rounding_half_up(setup_ok):
@@ -118,7 +121,7 @@ def test_balanced_entry_with_rounding_half_up(setup_ok):
     ])
     accountant.record_entry(entry)
 
-    assert chart.get_account("1105").balance == D("1000.11")
+    assert chart.get_account("1105").balance == SEEDED_BALANCE + D("0.11")
     assert chart.get_account("4120").balance == D("0.11")
 
 
@@ -177,7 +180,7 @@ def test_line_amount_missing_detected_pre_validation(setup_ok):
     assert "has no amount" in str(e.value)
 
     # Nada mutó
-    assert chart.get_account("1105").balance == D("1000.00")
+    assert chart.get_account("1105").balance == SEEDED_BALANCE
     assert chart.get_account("4120").balance == D("0.00")
     assert len(ledger.get_all_entries()) == 0
 
@@ -189,7 +192,7 @@ def test_empty_or_invalid_entry_object_raises(setup_ok):
     assert "Empty or invalid AccountingEntry" in str(e.value)
 
     # Estado intacto
-    assert chart.get_account("1105").balance == D("1000.00")
+    assert chart.get_account("1105").balance == SEEDED_BALANCE
     assert chart.get_account("4120").balance == D("0.00")
     assert len(ledger.get_all_entries()) == 0
 
@@ -222,7 +225,7 @@ def test_rollback_if_ledger_add_fails(setup_ok):
         accountant.record_entry(entry)
 
     # Debe revertirse a los saldos originales
-    assert chart.get_account("1105").balance == D("1000.00")
+    assert chart.get_account("1105").balance == SEEDED_BALANCE
     assert chart.get_account("4120").balance == D("0.00")
     assert len(fl.get_all_entries()) == 0
 
@@ -247,7 +250,7 @@ def test_rollback_if_update_balance_fails_midway(monkeypatch, setup_ok):
     with pytest.raises(RuntimeError):
         accountant.record_entry(entry)
 
-    # Debe haberse revertido el Cash a 1000.00 y Revenue permanecer en 0.00
-    assert cash.balance == D("1000.00")
+    # Debe haberse revertido el Cash al seeded balance y Revenue permanecer en 0.00
+    assert cash.balance == SEEDED_BALANCE
     assert revenue.balance == D("0.00")
     assert len(ledger.get_all_entries()) == 0

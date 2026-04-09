@@ -39,12 +39,11 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
+from src.config_paths import get_default_chart_of_accounts_path
 from src.simulation.economy.economy import Economy
 
 
-
-
-accounts_path = ROOT_DIR /"chart_of_accounts.yaml"
+accounts_path = get_default_chart_of_accounts_path()
 
 # Static Dictionary with base agents info 
 

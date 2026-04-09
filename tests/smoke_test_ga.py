@@ -41,6 +41,7 @@ if str(REPO_ROOT) not in sys.path:
 # ---------------------------------------------------------------------------
 # Domain imports
 # ---------------------------------------------------------------------------
+from src.config_paths import get_default_chart_of_accounts_path
 from src.simulation.economy.economy import Economy
 from src.simulation.economy.production_process.production_graph import ProductionGraph
 from src.simulation.economy.production_process.production_process import ProductionProcess
@@ -78,7 +79,7 @@ PRICE_MATRIX = np.array(
 )
 
 GOODS = sorted({n for u, v in GRAPH_LINKS for n in (u, v)})
-ACCOUNTS_PATH = REPO_ROOT / "chart_of_accounts.yaml"
+ACCOUNTS_PATH = get_default_chart_of_accounts_path()
 
 AGENTS: Dict[str, Dict[str, Any]] = {
     "MKT": {

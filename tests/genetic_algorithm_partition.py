@@ -43,6 +43,7 @@ from src.simulation.economy.economy import Economy
 from src.simulation.economy.production_process.production_graph import ProductionGraph
 from src.simulation.economy.production_process.production_process import ProductionProcess
 from src.simulation.planner.planner import Planner
+from src.config_paths import get_default_chart_of_accounts_path
 
 
 # =============================================================================
@@ -701,7 +702,7 @@ if __name__ == "__main__":
 , dtype=int)
 
     goods_list = sorted({n for u, v in Grafo for n in (u, v)})
-    accounts_path = ROOT_DIR / "chart_of_accounts.yaml"
+    accounts_path = get_default_chart_of_accounts_path()
     agents_info = {
         "MKT": {"type": "MKT", "inventory_strategy": "FIFO", "firm_related_goods": goods_list,
                 "income_statement_type": "standard", "accounts_yaml_path": accounts_path, "price_mapping": 0},

@@ -17,9 +17,12 @@ def D(x: str | float | int) -> Decimal:
     return Decimal(str(x)).quantize(Decimal("0.01"))
 
 
+SEEDED_BALANCE = D("100000000.00")
+
+
 @pytest.mark.parametrize("code,name,atype,expected_balance", [
-    ("1105", "Cash", "Asset", D("1000.00")),            # special seeded account
-    ("3115", "Owner's Equity", "Equity", D("1000.00")), # special seeded account
+    ("1105", "Cash", "Asset", SEEDED_BALANCE),            # special seeded account
+    ("3115", "Owner's Equity", "Equity", SEEDED_BALANCE), # special seeded account
     ("4000", "Sales", "Revenue", D("0.00")),            # regular account
     ("2505", "Accounts Payable", "Liability", D("0.00"))# regular account
 ])
@@ -32,14 +35,14 @@ def test_debit_increases_asset():
     # Starts at 1000.00 by seeding rule for code 1105
     acc = Account("1105", "Cash", "Asset", "Current Asset", "Cash and Cash Equivalents")
     acc.update_balance(100, is_debit=True)
-    assert acc.balance == D("1100.00")
+    assert acc.balance == SEEDED_BALANCE + D("100.00")
 
 
 def test_credit_decreases_asset():
     acc = Account("1105", "Cash", "Asset", "Current Asset", "Cash and Cash Equivalents")
     acc.update_balance(100, is_debit=True)   # 1100.00
     acc.update_balance(40, is_debit=False)   # 1060.00
-    assert acc.balance == D("1060.00")
+    assert acc.balance == SEEDED_BALANCE + D("60.00")
 
 
 def test_debit_decreases_revenue():
@@ -57,13 +60,13 @@ def test_credit_increases_revenue():
 def test_credit_increases_equity():
     acc = Account("3115", "Owner's Equity", "Equity", "Equity", "Equity Group")
     acc.update_balance(500, is_debit=False)  # credit increases equity
-    assert acc.balance == D("1500.00")
+    assert acc.balance == SEEDED_BALANCE + D("500.00")
 
 
 def test_debit_decreases_equity():
     acc = Account("3115", "Owner's Equity", "Equity", "Equity", "Equity Group")
     acc.update_balance(400, is_debit=True)   # debit decreases equity
-    assert acc.balance == D("600.00")
+    assert acc.balance == SEEDED_BALANCE - D("400.00")
 
 
 def test_raises_on_invalid_type():

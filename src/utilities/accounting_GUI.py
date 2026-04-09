@@ -29,9 +29,10 @@ while not (ROOT_DIR / "src" / "simulation" / "economy" / "economy.py").exists() 
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
+from src.config_paths import get_default_chart_of_accounts_path  # noqa: E402
 from src.simulation.economy.economy import Economy  # noqa: E402
 
-accounts_path = ROOT_DIR / "chart_of_accounts.yaml"
+accounts_path = get_default_chart_of_accounts_path()
 
 # ----------------------------------------------------------------------------- #
 # Agents config

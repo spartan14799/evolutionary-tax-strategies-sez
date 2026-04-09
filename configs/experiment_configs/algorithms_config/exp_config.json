@@ -155,7 +155,7 @@
     },
 
     "chart_of_accounts": {
-        "yaml_name": "chart_of_accounts.yaml"
+        "yaml_name": "../../chart_of_accounts/chart_of_accounts.yaml"
     },
     "BASE_AGENTS": {
         "MKT": {

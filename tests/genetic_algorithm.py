@@ -16,6 +16,7 @@ if str(ROOT_DIR) not in sys.path:
 # IMPORTANTE: Asegúrate de que tu clase Economy sea importable aquí.
 # =============================================================================
 from src.simulation.economy.economy import Economy
+from src.config_paths import get_default_chart_of_accounts_path
 
 # =============================================================================
 # 1. Función de Aptitud (Fitness)
@@ -201,7 +202,7 @@ price_matrix_list = [
 ]
 price_matrix = np.array(price_matrix_list, dtype=int)
 
-accounts_path = ROOT_DIR / "chart_of_accounts.yaml"
+accounts_path = get_default_chart_of_accounts_path()
 agents_dict = {
     "MKT": {
         "type": "MKT",

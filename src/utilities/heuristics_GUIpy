@@ -65,6 +65,7 @@ while not (ROOT / "src" / "simulation" / "economy" / "economy.py").exists() and 
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from src.config_paths import get_default_chart_of_accounts_path  # noqa: E402
 from src.simulation.economy.economy import Economy  # noqa: E402
 from src.search_heuristics import (  # noqa: E402
     run_ga_flat, run_ga_equivclass_joint, run_ga_equivclass_exhaustive
@@ -93,7 +94,7 @@ def build_graph_from_text(edges_text: str) -> nx.DiGraph:
 
 def build_agents_for_goods(goods: List[str]) -> Dict[str, Dict[str, Any]]:
     """Builds agents_information for MKT/NCT/ZF using a shared chart of accounts."""
-    accounts_path = ROOT / "chart_of_accounts.yaml"
+    accounts_path = get_default_chart_of_accounts_path()
     return {
         "MKT": {
             "type": "MKT",

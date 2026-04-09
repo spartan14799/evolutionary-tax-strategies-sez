@@ -13,8 +13,10 @@ REPO = Path(__file__).resolve().parents[1]          # FTZ_MODEL_2.0/
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
 
+from src.config_paths import get_default_chart_of_accounts_path  # noqa: E402
+
 YAML_CANDIDATES = [
-    REPO / "chart_of_accounts.yaml",
+    get_default_chart_of_accounts_path(),
     REPO / "tests" / "chart_of_accounts.yaml",
 ]
 YAML_PATH = next((p for p in YAML_CANDIDATES if p.exists()), None)
@@ -32,6 +34,9 @@ from src.simulation.economy.invisible_hand.global_accountant import Accountant  
 
 def D(x) -> Decimal:
     return Decimal(str(x)).quantize(Decimal("0.01"))
+
+
+SEEDED_BALANCE = D("100000000.00")
 
 
 # -------------------------- Helpers / Fixtures -------------------------------
@@ -101,10 +106,10 @@ def test_buy_e2e_balances_finished_products():
     # ----- Buyer -----
     steel_acc_buyer = buyer.chart_of_accounts.get_asset_account_for_good("Steel")
     assert steel_acc_buyer.balance == D("100.00")
-    assert buyer.chart_of_accounts.get_account("1105").balance == D("900.00")
+    assert buyer.chart_of_accounts.get_account("1105").balance == SEEDED_BALANCE - D("100.00")
 
     # ----- Seller -----
-    assert seller.chart_of_accounts.get_account("1105").balance == D("1100.00")
+    assert seller.chart_of_accounts.get_account("1105").balance == SEEDED_BALANCE + D("100.00")
     assert seller.chart_of_accounts.get_account("6120").balance == D("60.00")
     assert seller.chart_of_accounts.get_account("4120").balance == D("100.00")
     assert steel_acc_seller.balance == D("0.00")
@@ -157,7 +162,7 @@ def test_produce_e2e_balances_with_indirect_cost():
     # Indirectos: Dr 73 / Cr 1105 por 0.50 (no capitalizados)
     acc_73 = producer.chart_of_accounts.get_account("73")
     assert acc_73.balance == D("0.50")
-    assert producer.chart_of_accounts.get_account("1105").balance == D("999.50")
+    assert producer.chart_of_accounts.get_account("1105").balance == SEEDED_BALANCE - D("0.50")
 
     # Ledger: una sola entry para el productor
     assert len(producer.ledger.get_all_entries()) == 1

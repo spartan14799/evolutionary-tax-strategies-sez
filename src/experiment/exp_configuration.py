@@ -25,6 +25,8 @@ import numpy as np
 from pathlib import Path
 from typing import Dict, List, Tuple, Any, Union
 
+from src.config_paths import resolve_chart_of_accounts_path
+
 
 # =====================================================================
 # 1. LOAD GRAPHS FROM JSON
@@ -233,7 +235,9 @@ def parse_experiment_config(config_path: str) -> Dict[str, Dict[str, Any]]:
     # Extract yaml_name and inject it into env_construction
     chart_info = config.get("chart_of_accounts", {})
     yaml_name = chart_info.get("yaml_name", None)
-    env_construction["yaml_name"] = yaml_name  # ✅ Always included
+    env_construction["yaml_name"] = str(
+        resolve_chart_of_accounts_path(yaml_name, base_dir=config_path.parent)
+    )
 
     # Detect algorithm blocks (exclude fixed sections)
     excluded = {"common", "env_construction", "chart_of_accounts", "BASE_AGENTS"}

@@ -5,6 +5,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+from src.config_paths import get_default_chart_of_accounts_path, resolve_chart_of_accounts_path
 from src.experiment.exp_configuration import full_environment_pipeline
 from src.experiment.run_test_env import run_all_envs
 
@@ -81,7 +82,7 @@ def main():
                         help="Path to input graphs JSON.")
     parser.add_argument("--config", type=str, default="algorithms_config/test_config.json",
                         help="Path to algorithm configuration JSON.")
-    parser.add_argument("--chart", type=str, default="../../chart_of_accounts.yaml",
+    parser.add_argument("--chart", type=str, default=str(get_default_chart_of_accounts_path()),
                         help="Path to chart_of_accounts.yaml.")
     parser.add_argument("--tag", type=str, default="",
                         help="Optional tag to name the experiment folder.")
@@ -103,7 +104,7 @@ def main():
     print(f"Logging enabled at: {log_path}\n")
 
     # Paths
-    charts_path = Path(args.chart)
+    charts_path = resolve_chart_of_accounts_path(args.chart)
     config_path = Path(args.config)
     graphs_path = Path(args.graphs)
     env_csv_path = exp_dir / "environment_database.csv"
