@@ -122,12 +122,9 @@ def run_test_env(
         "env_name", "run", "algorithm", "seed", "best_curve", "best_value",
         "best_genome", "all_best_genomes", "elapsed_sec", "success"
     ]
-    if Path(path_output_db).exists():
-        db_df = pd.read_csv(path_output_db)
-    else:
-        db_df = pd.DataFrame(columns=db_cols)
-    
-    
+    # Keep only this environment's rows in memory. The shared CSV is appended
+    # incrementally from the coordinator process below.
+    env_df = pd.DataFrame(columns=db_cols)
 
     # ----------------------------------------------------------------------
     # Define available algorithm wrappers (expanded set)
@@ -160,6 +157,7 @@ def run_test_env(
     total_tasks = len(available_in_config) * runs
     completed = 0
     t0 = time.time()
+    write_header = not Path(path_output_db).exists()
 
     print(f" Starting {total_tasks} tasks on environment '{env_name}'...")
 
@@ -194,8 +192,10 @@ def run_test_env(
                     f" {res['algorithm']} | {env_name} | Run {res['run']} failed: {res['error']} | seed={res['seed']}"
                 )
 
-            db_df = pd.concat([db_df, pd.DataFrame([res])], ignore_index=True)
-            db_df.to_csv(path_output_db, index=False)
+            row = pd.DataFrame([res])
+            row.to_csv(path_output_db, mode="a", header=write_header, index=False)
+            write_header = False
+            env_df = pd.concat([env_df, row], ignore_index=True)
 
             elapsed_total = time.time() - t0
             print(
@@ -205,8 +205,7 @@ def run_test_env(
             )
 
     print(f"\n Finished {env_name}: {total_tasks} runs total in {time.time()-t0:.1f}s")
-    db_df.to_csv(path_output_db, index=False)
-    return db_df
+    return env_df
 
 
 # ============================================================================
