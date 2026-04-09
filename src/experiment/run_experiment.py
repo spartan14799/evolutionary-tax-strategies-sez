@@ -5,6 +5,13 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+# Ensure repository root is on sys.path for direct script execution.
+ROOT = Path(__file__).resolve().parent
+while not (ROOT / "src").exists() and ROOT != ROOT.parent:
+    ROOT = ROOT.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 from src.config_paths import get_default_chart_of_accounts_path, resolve_chart_of_accounts_path
 from src.experiment.exp_configuration import full_environment_pipeline
 from src.experiment.run_test_env import run_all_envs
@@ -78,10 +85,18 @@ def main():
                         help="Output directory for results and metadata.")
     parser.add_argument("--max-workers", type=int, default=4,
                         help="Maximum parallel workers for multiprocessing.")
-    parser.add_argument("--graphs", type=str, default="input_graphs/test_setup.json",
-                        help="Path to input graphs JSON.")
-    parser.add_argument("--config", type=str, default="algorithms_config/test_config.json",
-                        help="Path to algorithm configuration JSON.")
+    parser.add_argument(
+        "--graphs",
+        type=str,
+        default="configs/experiment_configs/input_graphs/test_suite_graphs.json",
+        help="Path to input graphs JSON.",
+    )
+    parser.add_argument(
+        "--config",
+        type=str,
+        default="configs/experiment_configs/algorithms_config/exp_config.json",
+        help="Path to algorithm configuration JSON.",
+    )
     parser.add_argument("--chart", type=str, default=str(get_default_chart_of_accounts_path()),
                         help="Path to chart_of_accounts.yaml.")
     parser.add_argument("--tag", type=str, default="",

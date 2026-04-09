@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import random
 import numpy as np
@@ -6,6 +7,13 @@ import pandas as pd
 from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from typing import Dict, Any
+
+# Ensure repository root is on sys.path for direct script execution.
+ROOT = Path(__file__).resolve().parent
+while not (ROOT / "src").exists() and ROOT != ROOT.parent:
+    ROOT = ROOT.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from src.config_paths import resolve_chart_of_accounts_path
 
