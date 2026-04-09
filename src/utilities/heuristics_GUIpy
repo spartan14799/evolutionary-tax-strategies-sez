@@ -60,7 +60,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 # Repository root detection and package imports
 # -----------------------------------------------------------------------------
 ROOT = Path(__file__).resolve().parent
-while not (ROOT / "classes" / "economy" / "economy.py").exists() and ROOT != ROOT.parent:
+while not (ROOT / "src" / "simulation" / "economy" / "economy.py").exists() and ROOT != ROOT.parent:
     ROOT = ROOT.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
