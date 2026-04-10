@@ -649,10 +649,19 @@ To add a new search procedure:
 
 ## Citation
 
+Pending to Change as DOI activation proceeds
+
 ```bibtex
-@article{yourpaper,
-  title   = {Evolutionary Computation for Tax-Minimizing Strategies in Special Economic Zones},
-  author  = {...},
-  year    = {2026}
+@inproceedings{evolutionary_optimization_SEZ,
+  author = {Leguizamón, Andrés and Sanchez, Carlos and Ocampo, Sofia and O'Reilly, Una-May and Hemberg, Erik},
+  title = {Evolutionary Computation for Tax-Minimizing Strategies in Special Economic Zones},
+  booktitle = {Proceedings of the Genetic and Evolutionary Computation Conference (GECCO '26)},
+  year = {2026},
+  pages = {1--9},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  doi = {10.1145/3795095.3805115},
+  location = {San Jose, Costa Rica},
+  month = jul
 }
 ```
