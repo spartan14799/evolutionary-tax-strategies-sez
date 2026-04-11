@@ -4,3 +4,6 @@
 #local tests
 .hypothesis/
 pytest.ini/
+.venv/
+
+report.log
