@@ -8,6 +8,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
 [![DEAP](https://img.shields.io/badge/DEAP-GitHub-0A66C2.svg)](https://github.com/deap/deap)
 [![PySwarms](https://img.shields.io/badge/PySwarms-PyPI-1F6FEB.svg)](https://pypi.org/project/pyswarms/)
+[![DOI](https://zenodo.org/badge/939664643.svg)](https://doi.org/10.5281/zenodo.19506793)
 
 ## Overview
 
