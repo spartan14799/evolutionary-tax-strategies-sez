@@ -1,4 +1,7 @@
 # Evolutionary Computation for Tax-Minimizing Strategies in Special Economic Zones
+<p align="center">
+  <img src="logo_assets/Logo.jpeg" alt="Logo" width="200"/>
+</p>
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)]()
 [![Framework](https://img.shields.io/badge/Type-Agent--Based%20Simulation-orange.svg)]()
