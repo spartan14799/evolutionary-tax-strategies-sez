@@ -1,9 +1,13 @@
-#Editor
-.vscode/
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-#local tests
-.hypothesis/
-pytest.ini/
+# Entornos virtuales
 .venv/
+env/
+venv/
 
+# Resultados de experimentos
 report.log
