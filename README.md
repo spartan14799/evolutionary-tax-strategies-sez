@@ -217,17 +217,16 @@ Detailed documentation is organized separately from this main README.
 
 For the full benchmark workflow, configuration logic, output structure, reproducibility notes, and the fine-tuning pipeline, see:
 
-```bash
+
 [docs/experiments.md](docs/experiments.md)
-```
+
 
 ### Paper artifacts and result navigation
 
 For notebooks, PDFs, benchmark-environment documentation, ladder-strategy materials, benchmark-analysis notebooks, and analytical support artifacts, see:
 
-```bash
-[paper_results/README.md](paper_results/README.md)
-```
+
+
 
 This separation is intentional: the main README provides a high-level entry point, while the linked documents provide exhaustive operational and documentary detail.
 
@@ -245,9 +244,9 @@ The repository includes the main documentary artifacts used to support the GECCO
 
 A guided overview of these materials is provided in:
 
-```bash
+
 [paper_results/README.md](paper_results/README.md)
-```
+
 ### Ladder Strategy Materials
 
 The main notebook and PDF corresponding to the paper’s *Ladder Strategy* analysis are available here:
