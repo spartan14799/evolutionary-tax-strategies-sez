@@ -157,7 +157,7 @@ We recommend using **Conda** for environment isolation.
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/******.git](https://github.com/********.git)
+git clone [https://github.com/andres-leguizamon/evolutionary-tax-strategies-sez.git](https://github.com/andres-leguizamon/evolutionary-tax-strategies-sez.git)
 cd repo
 
 # 2. Create and activate environment
@@ -218,7 +218,7 @@ Detailed documentation is organized separately from this main README.
 For the full benchmark workflow, configuration logic, output structure, reproducibility notes, and the fine-tuning pipeline, see:
 
 ```bash
-docs/experiments.md
+[docs/experiments.md](docs/experiments.md)
 ```
 
 ### Paper artifacts and result navigation
@@ -226,7 +226,7 @@ docs/experiments.md
 For notebooks, PDFs, benchmark-environment documentation, ladder-strategy materials, benchmark-analysis notebooks, and analytical support artifacts, see:
 
 ```bash
-paper_results/README.md
+[paper_results/README.md](paper_results/README.md)
 ```
 
 This separation is intentional: the main README provides a high-level entry point, while the linked documents provide exhaustive operational and documentary detail.
@@ -246,8 +246,27 @@ The repository includes the main documentary artifacts used to support the GECCO
 A guided overview of these materials is provided in:
 
 ```bash
-paper_results/README.md
+[paper_results/README.md](paper_results/README.md)
 ```
+### Ladder Strategy Materials
+
+The main notebook and PDF corresponding to the paper’s *Ladder Strategy* analysis are available here:
+
+- [`ladder_strategy.ipynb`](paper_results/docs/ladder_strategy/ladder_strategy.ipynb)
+- [`ladder_strategy.pdf`](paper_results/docs/ladder_strategy/ladder_strategy.pdf)
+
+These files provide both the executable and reading-oriented versions of the paper’s central strategic result.
+
+---
+
+### Benchmark Test-Suite Documentation
+
+The notebook and PDF documenting the benchmark DAG suite used in the paper are available here:
+
+- [`Graphs_prop.ipynb`](paper_results/docs/environment_description/Graphs_prop.ipynb)
+- [`DAG_Structures.pdf`](paper_results/docs/environment_description/DAG_Structures.pdf)
+
+These materials describe the structure, design rationale, and interpretation of the benchmark environments used throughout the experimental analysis.
 
 ---
 

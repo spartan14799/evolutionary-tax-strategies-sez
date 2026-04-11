@@ -139,8 +139,8 @@ paper_results/docs/ladder_strategy/ladder_strategy.pdf
 
 ### Roles of these files
 
-- `ladder_strategy.ipynb`: executable and inspectable analytical notebook.
-- `ladder_strategy.pdf`: stable reading artifact suitable for direct consultation alongside the paper.
+- [`ladder_strategy.ipynb`](/paper_results/docs/ladder_strategy/ladder_strategy.ipynb): executable and inspectable analytical notebook.
+- [`ladder_strategy.pdf`](/paper_results/docs/ladder_strategy/ladder_strategy.pdf): stable reading artifact suitable for direct consultation alongside the paper.
 
 These materials reconstruct how the strategy emerges under the modeled interaction between tax asymmetries and price asymmetries, and how it is interpreted within the broader institutional context of the paper.
 
@@ -153,7 +153,8 @@ They should be read together with the benchmark-environment documentation, since
 The main notebook for inspecting and interpreting benchmark outputs is:
 
 ```text
-paper_results/experiment/experiment_analysis.ipynb
+[paper_results/experiment/experiment_analysis.ipynb](/paper_results/experiment/experiment_analysis.ipynb)
+
 ```
 
 This notebook documents the post-processing of benchmark runs and supports the comparative interpretation of experimental results reported in the paper.
@@ -170,13 +171,13 @@ Typical uses include:
 The corresponding analysis-support artifacts are also preserved in:
 
 ```text
-paper_results/data_analysis/
+[paper_results/data_analysis/](/paper_results/data_analysis/)
 ```
 
 In particular, the repository currently includes:
 
 ```text
-paper_results/data_analysis/experiment/configs/merged_config.json
+[paper_results/data_analysis/experiment/configs/merged_config.json](/paper_results/data_analysis/experiment/configs/merged_config.json)
 ```
 
 This file preserves a merged configuration snapshot for the experiment-analysis layer.
@@ -184,7 +185,7 @@ This file preserves a merged configuration snapshot for the experiment-analysis 
 The benchmark execution pipeline itself is documented separately in:
 
 ```text
-docs/experiments.md
+[docs/experiments.md](/docs/experiments.md)
 ```
 
 This separation is intentional: execution logic and research-artifact interpretation are documented in different places.
@@ -198,31 +199,34 @@ The repository preserves the outputs and inspection notebooks used to analyze hy
 These materials are organized under:
 
 ```text
-paper_results/fine_tuning/individual_algorithm_results/
+[`individual_algorithm_results`](paper_results/fine_tuning/individual_algorithm_results/)
 ```
 
 This directory contains algorithm-specific notebooks for reviewing tuning outcomes and identifying the final selected parameter settings.
 
 The currently preserved notebooks include:
 
-```text
-paper_results/fine_tuning/individual_algorithm_results/baseline/baseline_best_params.ipynb
-paper_results/fine_tuning/individual_algorithm_results/generic/generic_best_params.ipynb
-paper_results/fine_tuning/individual_algorithm_results/joint/joint_best_params.ipynb
-paper_results/fine_tuning/individual_algorithm_results/macro/macro_best_params.ipynb
-paper_results/fine_tuning/individual_algorithm_results/macro_micro/macro_micro_best_params.ipynb
-paper_results/fine_tuning/individual_algorithm_results/micro/micro_best_params.ipynb
-paper_results/fine_tuning/individual_algorithm_results/mixed_generic/mixed_generic_best_params.ipynb
-paper_results/fine_tuning/individual_algorithm_results/pso/pso_best_params.ipynb
-paper_results/fine_tuning/individual_algorithm_results/recomb/recomb_best_params.ipynb
-```
+All notebooks are located under:
+`paper_results/fine_tuning/individual_algorithm_results/`
+
+| Algorithm        | Notebook |
+|------------------|----------|
+| Baseline         | [Open](paper_results/fine_tuning/individual_algorithm_results/baseline/baseline_best_params.ipynb) |
+| Generic          | [Open](paper_results/fine_tuning/individual_algorithm_results/generic/generic_best_params.ipynb) |
+| Joint            | [Open](paper_results/fine_tuning/individual_algorithm_results/joint/joint_best_params.ipynb) |
+| Macro            | [Open](paper_results/fine_tuning/individual_algorithm_results/macro/macro_best_params.ipynb) |
+| Macro Micro      | [Open](paper_results/fine_tuning/individual_algorithm_results/macro_micro/macro_micro_best_params.ipynb) |
+| Micro            | [Open](paper_results/fine_tuning/individual_algorithm_results/micro/micro_best_params.ipynb) |
+| Mixed Generic    | [Open](paper_results/fine_tuning/individual_algorithm_results/mixed_generic/mixed_generic_best_params.ipynb) |
+| PSO              | [Open](paper_results/fine_tuning/individual_algorithm_results/pso/pso_best_params.ipynb) |
+| Recombination    | [Open](paper_results/fine_tuning/individual_algorithm_results/recomb/recomb_best_params.ipynb) |
 
 These notebooks collectively form the documentary record of how tuning outputs were inspected and how final heuristic configurations were selected for benchmark evaluation.
 
 For the operational fine-tuning pipeline itself, including commands, plan files, candidate files, and output conventions, see:
 
 ```text
-docs/experiments.md
+[docs/experiments.md](docs/experiments.md)
 ```
 
 ---
@@ -234,8 +238,10 @@ The benchmark price system is a central component of the modeled environments. W
 The two most relevant code paths are:
 
 ```text
-src/experiment/exp_configuration.py
-src/simulation/economy/order_book/utils/price_markup_generator.py
+## Core Source Files
+
+- [`exp_configuration.py`](src/experiment/exp_configuration.py)
+- [`price_markup_generator.py`](src/simulation/economy/order_book/utils/price_markup_generator.py)
 ```
 
 From the perspective of this directory:
@@ -253,7 +259,7 @@ This directory should be read together with the following repository-level docum
 ### Main project overview
 
 ```text
-README.md
+[README.md](/README.md)
 ```
 
 This is the primary entry point to the repository and provides the high-level framing of the project.
@@ -261,7 +267,7 @@ This is the primary entry point to the repository and provides the high-level fr
 ### Experimental pipelines and reproducibility details
 
 ```text
-docs/experiments.md
+[`experiments.md`](docs/experiments.md)
 ```
 
 This document explains how to run benchmark experiments and fine-tuning workflows, how configurations are structured, and what outputs are generated.
@@ -281,9 +287,9 @@ In this sense:
 Read in this order:
 
 ```text
-paper_results/docs/environment_description/DAG_Structures.pdf
-paper_results/docs/environment_description/Graphs_prop.ipynb
-paper_results/experiment/experiment_analysis.ipynb
+- [`DAG_Structures.pdf`](paper_results/docs/environment_description/DAG_Structures.pdf)
+- [`Graphs_prop.ipynb`](paper_results/docs/environment_description/Graphs_prop.ipynb)
+- [`experiment_analysis.ipynb`](paper_results/experiment/experiment_analysis.ipynb)
 ```
 
 ### For a reader interested in the paper’s main strategic finding
@@ -291,9 +297,9 @@ paper_results/experiment/experiment_analysis.ipynb
 Read in this order:
 
 ```text
-paper_results/docs/ladder_strategy/ladder_strategy.pdf
-paper_results/docs/ladder_strategy/ladder_strategy.ipynb
-paper_results/docs/environment_description/DAG_Structures.pdf
+- [`ladder_strategy.pdf`](paper_results/docs/ladder_strategy/ladder_strategy.pdf)
+- [`ladder_strategy.ipynb`](paper_results/docs/ladder_strategy/ladder_strategy.ipynb)
+- [`DAG_Structures.pdf`](paper_results/docs/environment_description/DAG_Structures.pdf)
 ```
 
 ### For a reader interested in heuristic tuning
@@ -301,8 +307,8 @@ paper_results/docs/environment_description/DAG_Structures.pdf
 Read in this order:
 
 ```text
-paper_results/fine_tuning/individual_algorithm_results/
-docs/experiments.md
+[`paper_results/fine_tuning/individual_algorithm_results/`](paper_results/fine_tuning/individual_algorithm_results/)
+[`docs/experiments.md`](docs/experiments.md)
 ```
 
 ### For a reader trying to connect code, benchmark structure, and interpretation
