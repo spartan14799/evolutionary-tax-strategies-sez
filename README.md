@@ -157,7 +157,7 @@ We recommend using **Conda** for environment isolation.
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/andres-leguizamon/evolutionary-tax-strategies-sez.git](https://github.com/andres-leguizamon/evolutionary-tax-strategies-sez.git)
+git clone https://github.com/Tax-Avoidance-Detection-MIT-Global-Seed/evolutionary-tax-strategies-sez.git
 cd repo
 
 # 2. Create and activate environment
