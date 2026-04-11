@@ -3,6 +3,8 @@
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)]()
 [![Framework](https://img.shields.io/badge/Type-Agent--Based%20Simulation-orange.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
+[![DEAP](https://img.shields.io/badge/DEAP-GitHub-0A66C2.svg)](https://github.com/deap/deap)
+[![PySwarms](https://img.shields.io/badge/PySwarms-PyPI-1F6FEB.svg)](https://pypi.org/project/pyswarms/)
 
 ## Overview
 
@@ -120,6 +122,11 @@ Supported search methods currently include:
 | Genetic Algorithm | DEAP-based |
 | Particle Swarm Optimization | Custom Implementation based on Pyswarms |
 | Binary Random Search | Baseline |
+
+Reference libraries:
+
+[![DEAP](https://img.shields.io/badge/DEAP-GitHub-0A66C2.svg)](https://github.com/deap/deap)
+[![PySwarms](https://img.shields.io/badge/PySwarms-PyPI-1F6FEB.svg)](https://pypi.org/project/pyswarms/)
 
 ---
 

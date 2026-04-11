@@ -21,6 +21,12 @@ The contents of `paper_results/` are organized to support four complementary obj
 
 In short, this directory is the documentary layer of the project: it contains the research artifacts that sit between the codebase and the final paper.
 
+For the operational definition of algorithm parameters, benchmark configurations, fine-tuning inputs, execution commands, and output conventions, the repository-level reference is:
+
+```text
+docs/experiments.md
+```
+
 ---
 
 ## Directory Structure
