@@ -149,23 +149,22 @@ This setting allows direct analysis of how changes in institutional design resha
 
 ---
 
-## Quick Start
+# Quick Start
 
 ### Installation
 
-We recommend using **Conda** for environment isolation.
+> **Prerequisites:** [uv](https://docs.astral.sh/uv/) is required. Install it via pip:
+> ```bash
+> pip install uv
+> ```
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/Tax-Avoidance-Detection-MIT-Global-Seed/evolutionary-tax-strategies-sez.git
-cd repo
+cd evolutionary-tax-strategies-sez
 
-# 2. Create and activate environment
-conda create -n ptzm python=3.9 -y
-conda activate ptzm
-
-# 3. Install dependencies
-pip install -r requirements.txt
+# 2. Install dependencies
+uv sync
 ```
 
 ---
@@ -175,8 +174,9 @@ pip install -r requirements.txt
 A minimal validation run of the benchmark pipeline can be launched with:
 
 ```bash
-python src/experiment/run_experiment.py --algos generic --runs 1 --gens 5 --max-workers 1
+uv run python src/experiment/run_experiment.py --algos generic --runs 1 --gens 5 --max-workers 1
 ```
+
 This command is intended as a first-pass execution test. It verifies that the benchmark orchestration pipeline, environment generation, and algorithm wrapper are correctly wired.
 
 ---
@@ -184,27 +184,56 @@ This command is intended as a first-pass execution test. It verifies that the be
 ## Main Entry Points
 
 ### Benchmark experiments
-```bash
-src/experiment/run_experiment.py
+
+The Routine for excuting experiments is located in [src/experiment/run_experiment.py](src/experiment/run_experiment.py)
+
+Primary configuration files:
+
+```
+configs/experiment_configs/algorithms_config/exp_config.json     # Algorithm config
+configs/experiment_configs/input_graphs/test_suite_graphs.json   # Graph suite config
+configs/chart_of_accounts/chart_of_accounts.yaml                 # Chart of accounts
 ```
 
-Primary inputs:
+### Running an experiment
+
 ```bash
-configs/experiment_configs/algorithms_config/exp_config.json
-configs/experiment_configs/input_graphs/test_suite_graphs.json
-configs/chart_of_accounts/chart_of_accounts.yaml
+uv run python src/experiment/run_experiment.py \
+  --algos <algorithm1,algorithm2> \
+  --runs <number_of_runs> \
+  --gens <number_of_generations> \
+  --max-workers <number_of_threads>
 ```
+
+| Argument | Description |
+|---|---|
+| `--algos` | Comma-separated list of algorithms to benchmark, do not write as string just write each algorithm name (e.g. generic,pso) |
+| `--runs` | Number of runs to execute per algorithm |
+| `--gens` | Number of generations/iterations for evolutionary and generational heuristic algorithms (e.g. PSO,GA) |
+| `--max-workers` | Maximum number of threads for parallelization |
+
 
 ### Fine-tuning workflow
+
+
+The Routine for excuting the Fine-Tuning workflow is located in [src/fine_tuning/scripts/run_all.py](src/fine_tuning/scripts/run_all.py)
+
+
+Primary inputs for the routine include:
+
 ```bash
-src/fine_tuning/scripts/run_all.py
+configs/fine_tuning_configs/parameter_samples/plan.json # JSON file to specify algorithms to fine tune, parameters to fine tune by algorithm and boudnaries for parameter
+configs/fine_tuning_configs/parameter_samples/samples/  # Samples of parameters to test 
+configs/chart_of_accounts/chart_of_accounts.yaml # accounting template used by agents in the simualtion
 ```
 
-Primary inputs typically include:
+### Execution of the fine tuning 
+
 ```bash
-configs/fine_tuning_configs/parameter_samples/plan.json
-configs/fine_tuning_configs/parameter_samples/samples/
-configs/chart_of_accounts/chart_of_accounts.yaml
+uv run python src/fine_tuning/scripts/run_all.py  
+  --plan configs/fine_tuning_configs/parameter_samples/plan.json 
+  --candidates-dir configs/fine_tuning_configs/parameter_samples/samples/
+  --out-base paper_results/fine_tuning_output
 ```
 
 ---
